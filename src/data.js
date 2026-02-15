@@ -11,7 +11,8 @@ let pricingData = null;
  */
 export async function loadPricingData() {
   try {
-    const response = await fetch('/data/pricing.json');
+    const baseUrl = import.meta.env.BASE_URL;
+    const response = await fetch(`${baseUrl}data/pricing.json`);
     if (!response.ok) {
       throw new Error(`Failed to load pricing data: ${response.status}`);
     }
