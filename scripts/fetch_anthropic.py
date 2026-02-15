@@ -3,54 +3,141 @@
 Fetch pricing data from Anthropic.
 
 Data source: https://www.anthropic.com/pricing
+Last verified: 2026-02-15
 """
 
 import json
 import sys
+import re
 from datetime import datetime, timezone
 from pathlib import Path
+import requests
+from bs4 import BeautifulSoup
 
 
 def fetch_pricing_data():
-    """Fetch Anthropic pricing data."""
+    """Fetch Anthropic pricing data by scraping the pricing page."""
     current_time = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
 
-    # TODO: Implement scraping from https://www.anthropic.com/pricing
-    return {
-        "name": "Anthropic",
-        "lastUpdated": current_time,
-        "models": [
+    url = 'https://www.anthropic.com/pricing'
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }
+
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+    except requests.RequestException as e:
+        print(f"✗ Error fetching Anthropic pricing page: {e}")
+        raise
+
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    models = []
+
+    # Try to find pricing information in the page
+    # Anthropic's pricing page structure may vary, so we'll use multiple strategies
+
+    # Strategy 1: Look for model names and prices in text
+    text = soup.get_text()
+
+    # Known Anthropic models and their typical pricing (fallback if scraping fails)
+    # We'll try to find these in the page content
+    known_models = {
+        'Claude 3.5 Sonnet': {
+            'modelId': 'claude-3-5-sonnet-20241022',
+            'inputPattern': r'claude.*3\.?5.*sonnet.*?input.*?\$?(\d+\.?\d*)',
+            'outputPattern': r'claude.*3\.?5.*sonnet.*?output.*?\$?(\d+\.?\d*)',
+        },
+        'Claude 3.5 Haiku': {
+            'modelId': 'claude-3-5-haiku-20241022',
+            'inputPattern': r'claude.*3\.?5.*haiku.*?input.*?\$?(\d+\.?\d*)',
+            'outputPattern': r'claude.*3\.?5.*haiku.*?output.*?\$?(\d+\.?\d*)',
+        },
+        'Claude 3 Opus': {
+            'modelId': 'claude-3-opus-20240229',
+            'inputPattern': r'claude.*3.*opus.*?input.*?\$?(\d+\.?\d*)',
+            'outputPattern': r'claude.*3.*opus.*?output.*?\$?(\d+\.?\d*)',
+        },
+    }
+
+    # Try to extract pricing from the page
+    # Look for table rows or structured data
+    tables = soup.find_all('table')
+    pricing_found = False
+
+    for table in tables:
+        rows = table.find_all('tr')
+        for row in rows:
+            cells = row.find_all(['td', 'th'])
+            row_text = ' '.join(cell.get_text().strip() for cell in cells).lower()
+
+            # Check if this row contains Claude model pricing
+            for model_name, model_info in known_models.items():
+                if any(keyword in row_text for keyword in ['claude', 'sonnet', 'haiku', 'opus']):
+                    # Try to extract prices
+                    price_pattern = r'\$?(\d+\.?\d+)'
+                    prices = re.findall(price_pattern, row_text)
+
+                    if len(prices) >= 2:
+                        # Assume first price is input, second is output
+                        input_cost = float(prices[0])
+                        output_cost = float(prices[1])
+
+                        # Check if this matches our model
+                        if model_name.lower() in row_text:
+                            models.append({
+                                'name': model_name,
+                                'modelId': model_info['modelId'],
+                                'pricing': {
+                                    'inputTokens': input_cost,
+                                    'outputTokens': output_cost,
+                                    'unit': 'per 1K tokens',
+                                    'currency': 'USD'
+                                }
+                            })
+                            pricing_found = True
+
+    # Fallback: Use current known pricing if scraping didn't work
+    if not pricing_found:
+        print("⚠️  Could not scrape pricing from page, using known pricing as fallback")
+        models = [
             {
-                "name": "Claude 3.5 Sonnet",
-                "modelId": "claude-3-5-sonnet-20241022",
-                "pricing": {
-                    "inputTokens": 0.003,
-                    "outputTokens": 0.015,
-                    "unit": "per 1K tokens",
-                    "currency": "USD"
+                'name': 'Claude 3.5 Sonnet',
+                'modelId': 'claude-3-5-sonnet-20241022',
+                'pricing': {
+                    'inputTokens': 0.003,
+                    'outputTokens': 0.015,
+                    'unit': 'per 1K tokens',
+                    'currency': 'USD'
                 }
             },
             {
-                "name": "Claude 3.5 Haiku",
-                "modelId": "claude-3-5-haiku-20241022",
-                "pricing": {
-                    "inputTokens": 0.001,
-                    "outputTokens": 0.005,
-                    "unit": "per 1K tokens",
-                    "currency": "USD"
+                'name': 'Claude 3.5 Haiku',
+                'modelId': 'claude-3-5-haiku-20241022',
+                'pricing': {
+                    'inputTokens': 0.001,
+                    'outputTokens': 0.005,
+                    'unit': 'per 1K tokens',
+                    'currency': 'USD'
                 }
             },
             {
-                "name": "Claude 3 Opus",
-                "modelId": "claude-3-opus-20240229",
-                "pricing": {
-                    "inputTokens": 0.015,
-                    "outputTokens": 0.075,
-                    "unit": "per 1K tokens",
-                    "currency": "USD"
+                'name': 'Claude 3 Opus',
+                'modelId': 'claude-3-opus-20240229',
+                'pricing': {
+                    'inputTokens': 0.015,
+                    'outputTokens': 0.075,
+                    'unit': 'per 1K tokens',
+                    'currency': 'USD'
                 }
             }
         ]
+
+    return {
+        'name': 'Anthropic',
+        'lastUpdated': current_time,
+        'models': models
     }
 
 

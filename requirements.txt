@@ -2,6 +2,7 @@
 requests>=2.31.0
 beautifulsoup4>=4.12.0
 lxml>=5.0.0
+html5lib>=1.1
 
 # For dynamic sites (if needed)
 selenium>=4.15.0
@@ -9,6 +10,9 @@ playwright>=1.40.0
 
 # Data validation and processing
 jsonschema>=4.20.0
+
+# HTML parsing
+cssselect>=1.2.0
 
 # Testing
 pytest>=7.4.0

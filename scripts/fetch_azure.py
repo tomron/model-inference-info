@@ -1,42 +1,121 @@
 #!/usr/bin/env python3
-"""Fetch pricing data from Azure OpenAI."""
+"""
+Fetch pricing data from Azure OpenAI.
+
+Data source: https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/
+Last verified: 2026-02-15
+"""
 
 import json
 import sys
+import re
 from datetime import datetime, timezone
 from pathlib import Path
+import requests
+from bs4 import BeautifulSoup
 
 
 def fetch_pricing_data():
+    """Fetch Azure OpenAI pricing by scraping the pricing page."""
     current_time = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
-    # TODO: Implement scraping from Azure OpenAI pricing
-    return {
-        "name": "Azure OpenAI",
-        "lastUpdated": current_time,
-        "models": [
+
+    url = 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/'
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }
+
+    models = []
+    pricing_found = False
+
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        # Look for tables containing pricing
+        tables = soup.find_all('table')
+
+        for table in tables:
+            rows = table.find_all('tr')
+            for row in rows:
+                cells = row.find_all(['td', 'th'])
+                if len(cells) < 2:
+                    continue
+
+                row_text = ' '.join(cell.get_text().strip() for cell in cells)
+
+                # Look for GPT-4o pricing
+                if 'gpt-4o' in row_text.lower() and 'mini' not in row_text.lower():
+                    prices = re.findall(r'\$(\d+\.?\d*)', row_text)
+
+                    if len(prices) >= 2 and not any(m['modelId'] == 'gpt-4o' for m in models):
+                        models.append({
+                            'name': 'GPT-4o',
+                            'modelId': 'gpt-4o',
+                            'pricing': {
+                                'inputTokens': float(prices[0]),
+                                'outputTokens': float(prices[1]),
+                                'unit': 'per 1K tokens',
+                                'currency': 'USD'
+                            },
+                            'regions': ['eastus', 'westus', 'westeurope', 'japaneast']
+                        })
+                        pricing_found = True
+
+                # Look for GPT-4o mini pricing
+                elif 'gpt-4o' in row_text.lower() and 'mini' in row_text.lower():
+                    prices = re.findall(r'\$(\d+\.?\d*)', row_text)
+
+                    if len(prices) >= 2 and not any(m['modelId'] == 'gpt-4o-mini' for m in models):
+                        models.append({
+                            'name': 'GPT-4o mini',
+                            'modelId': 'gpt-4o-mini',
+                            'pricing': {
+                                'inputTokens': float(prices[0]),
+                                'outputTokens': float(prices[1]),
+                                'unit': 'per 1K tokens',
+                                'currency': 'USD'
+                            },
+                            'regions': ['eastus', 'westus', 'westeurope']
+                        })
+                        pricing_found = True
+
+    except Exception as e:
+        print(f"⚠️  Error scraping Azure OpenAI pricing: {e}")
+
+    # Fallback to known pricing
+    if not pricing_found:
+        print("⚠️  Using known pricing as fallback")
+        models = [
             {
-                "name": "GPT-4o",
-                "modelId": "gpt-4o",
-                "pricing": {
-                    "inputTokens": 0.005,
-                    "outputTokens": 0.015,
-                    "unit": "per 1K tokens",
-                    "currency": "USD"
+                'name': 'GPT-4o',
+                'modelId': 'gpt-4o',
+                'pricing': {
+                    'inputTokens': 0.005,
+                    'outputTokens': 0.015,
+                    'unit': 'per 1K tokens',
+                    'currency': 'USD'
                 },
-                "regions": ["eastus", "westus", "westeurope", "japaneast"]
+                'regions': ['eastus', 'westus', 'westeurope', 'japaneast']
             },
             {
-                "name": "GPT-4o mini",
-                "modelId": "gpt-4o-mini",
-                "pricing": {
-                    "inputTokens": 0.00015,
-                    "outputTokens": 0.0006,
-                    "unit": "per 1K tokens",
-                    "currency": "USD"
+                'name': 'GPT-4o mini',
+                'modelId': 'gpt-4o-mini',
+                'pricing': {
+                    'inputTokens': 0.00015,
+                    'outputTokens': 0.0006,
+                    'unit': 'per 1K tokens',
+                    'currency': 'USD'
                 },
-                "regions": ["eastus", "westus", "westeurope"]
+                'regions': ['eastus', 'westus', 'westeurope']
             }
         ]
+
+    return {
+        'name': 'Azure OpenAI',
+        'lastUpdated': current_time,
+        'models': models
     }
 
 

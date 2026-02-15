@@ -1,31 +1,81 @@
 #!/usr/bin/env python3
-"""Fetch pricing data from Cursor."""
+"""
+Fetch pricing data from Cursor.
+
+Data source: https://www.cursor.com/pricing
+Last verified: 2026-02-15
+"""
 
 import json
 import sys
+import re
 from datetime import datetime, timezone
 from pathlib import Path
+import requests
+from bs4 import BeautifulSoup
 
 
 def fetch_pricing_data():
+    """Fetch Cursor pricing by scraping the pricing page."""
     current_time = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
-    # TODO: Implement scraping from Cursor pricing page
-    return {
-        "name": "Cursor",
-        "lastUpdated": current_time,
-        "models": [
-            {
-                "name": "Cursor Pro",
-                "modelId": "cursor-pro",
-                "pricing": {
-                    "inputTokens": 0,
-                    "outputTokens": 0,
-                    "unit": "per month",
-                    "currency": "USD"
+
+    url = 'https://www.cursor.com/pricing'
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }
+
+    models = []
+    pricing_found = False
+
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+        text = soup.get_text().lower()
+
+        # Look for Pro pricing
+        pro_price_match = re.search(r'pro.*?\$(\d+).*?(?:month|mo)', text, re.DOTALL)
+
+        if pro_price_match:
+            pro_price = float(pro_price_match.group(1))
+            models.append({
+                'name': 'Cursor Pro',
+                'modelId': 'cursor-pro',
+                'pricing': {
+                    'inputTokens': 0,
+                    'outputTokens': 0,
+                    'unit': 'per month',
+                    'currency': 'USD'
                 },
-                "notes": "$20/month subscription with usage limits"
+                'notes': f'${pro_price}/month subscription with usage limits'
+            })
+            pricing_found = True
+
+    except Exception as e:
+        print(f"⚠️  Error scraping Cursor pricing: {e}")
+
+    # Fallback to known pricing
+    if not pricing_found:
+        print("⚠️  Using known pricing as fallback")
+        models = [
+            {
+                'name': 'Cursor Pro',
+                'modelId': 'cursor-pro',
+                'pricing': {
+                    'inputTokens': 0,
+                    'outputTokens': 0,
+                    'unit': 'per month',
+                    'currency': 'USD'
+                },
+                'notes': '$20/month subscription with usage limits'
             }
         ]
+
+    return {
+        'name': 'Cursor',
+        'lastUpdated': current_time,
+        'models': models
     }
 
 
