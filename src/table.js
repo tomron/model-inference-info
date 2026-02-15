@@ -8,6 +8,15 @@ import { formatCost, getCostLevel, findLowestCosts } from './utils.js';
 let expandedRows = new Set();
 
 /**
+ * Get a unique row identifier for a model.
+ * @param {Object} model - Model data
+ * @returns {string} Unique identifier
+ */
+function getRowId(model) {
+  return `${model.provider}:${model.modelId}`;
+}
+
+/**
  * Render the pricing table with model data.
  * @param {Array} models - Array of model objects
  */
@@ -38,7 +47,8 @@ export function renderTable(models) {
     tbody.appendChild(row);
 
     // Add expanded details row if this model was expanded
-    if (expandedRows.has(model.modelId)) {
+    const rowId = getRowId(model);
+    if (expandedRows.has(rowId)) {
       const detailsRow = createDetailsRow(model);
       tbody.appendChild(detailsRow);
     }
@@ -53,11 +63,12 @@ export function renderTable(models) {
  */
 function createModelRow(model, lowestCosts) {
   const row = document.createElement('tr');
-  row.dataset.modelId = model.modelId;
+  const rowId = getRowId(model);
+  row.dataset.rowId = rowId;
   row.style.cursor = 'pointer';
   row.addEventListener('click', () => toggleRowDetails(model));
 
-  if (expandedRows.has(model.modelId)) {
+  if (expandedRows.has(rowId)) {
     row.classList.add('expanded');
   }
 
@@ -147,7 +158,8 @@ function createModelRow(model, lowestCosts) {
 function createDetailsRow(model) {
   const row = document.createElement('tr');
   row.className = 'expanded-details';
-  row.dataset.detailsFor = model.modelId;
+  const rowId = getRowId(model);
+  row.dataset.detailsFor = rowId;
 
   const cell = document.createElement('td');
   cell.colSpan = 5;
@@ -216,24 +228,24 @@ function createDetailItem(label, value) {
  * @param {Object} model - Model data
  */
 function toggleRowDetails(model) {
-  const modelId = model.modelId;
+  const rowId = getRowId(model);
 
-  if (expandedRows.has(modelId)) {
-    expandedRows.delete(modelId);
+  if (expandedRows.has(rowId)) {
+    expandedRows.delete(rowId);
     // Remove details row
-    const detailsRow = document.querySelector(`tr[data-details-for="${CSS.escape(modelId)}"]`);
+    const detailsRow = document.querySelector(`tr[data-details-for="${CSS.escape(rowId)}"]`);
     if (detailsRow) {
       detailsRow.remove();
     }
     // Remove expanded class
-    const mainRow = document.querySelector(`tr[data-model-id="${CSS.escape(modelId)}"]`);
+    const mainRow = document.querySelector(`tr[data-row-id="${CSS.escape(rowId)}"]`);
     if (mainRow) {
       mainRow.classList.remove('expanded');
     }
   } else {
-    expandedRows.add(modelId);
+    expandedRows.add(rowId);
     // Add details row
-    const mainRow = document.querySelector(`tr[data-model-id="${CSS.escape(modelId)}"]`);
+    const mainRow = document.querySelector(`tr[data-row-id="${CSS.escape(rowId)}"]`);
     if (mainRow) {
       mainRow.classList.add('expanded');
       const detailsRow = createDetailsRow(model);
