@@ -3,8 +3,8 @@ import { copyFileSync, mkdirSync } from 'fs'
 import { resolve } from 'path'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: '/model-inference-info/',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/model-inference-info/' : '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -21,4 +21,4 @@ export default defineConfig({
       }
     }
   ]
-})
+}))
