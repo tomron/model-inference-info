@@ -1,0 +1,246 @@
+{
+  "lastUpdated": "2026-02-15T10:23:41.586419Z",
+  "providers": [
+    {
+      "name": "AWS Bedrock",
+      "lastUpdated": "2026-02-15T10:23:41.423523Z",
+      "models": [
+        {
+          "name": "Claude 3.5 Sonnet",
+          "modelId": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+          "pricing": {
+            "inputTokens": 0.003,
+            "outputTokens": 0.015,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-east-1",
+            "us-west-2",
+            "eu-west-1",
+            "ap-southeast-1",
+            "ap-northeast-1"
+          ]
+        },
+        {
+          "name": "Claude 3.5 Haiku",
+          "modelId": "anthropic.claude-3-5-haiku-20241022-v1:0",
+          "pricing": {
+            "inputTokens": 0.001,
+            "outputTokens": 0.005,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-east-1",
+            "us-west-2",
+            "eu-west-1"
+          ]
+        },
+        {
+          "name": "Claude 3 Opus",
+          "modelId": "anthropic.claude-3-opus-20240229-v1:0",
+          "pricing": {
+            "inputTokens": 0.015,
+            "outputTokens": 0.075,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-east-1",
+            "us-west-2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Anthropic",
+      "lastUpdated": "2026-02-15T10:23:41.450108Z",
+      "models": [
+        {
+          "name": "Claude 3.5 Sonnet",
+          "modelId": "claude-3-5-sonnet-20241022",
+          "pricing": {
+            "inputTokens": 0.003,
+            "outputTokens": 0.015,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          }
+        },
+        {
+          "name": "Claude 3.5 Haiku",
+          "modelId": "claude-3-5-haiku-20241022",
+          "pricing": {
+            "inputTokens": 0.001,
+            "outputTokens": 0.005,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          }
+        },
+        {
+          "name": "Claude 3 Opus",
+          "modelId": "claude-3-opus-20240229",
+          "pricing": {
+            "inputTokens": 0.015,
+            "outputTokens": 0.075,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Azure OpenAI",
+      "lastUpdated": "2026-02-15T10:23:41.585974Z",
+      "models": [
+        {
+          "name": "GPT-4o",
+          "modelId": "gpt-4o",
+          "pricing": {
+            "inputTokens": 0.005,
+            "outputTokens": 0.015,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "eastus",
+            "westus",
+            "westeurope",
+            "japaneast"
+          ]
+        },
+        {
+          "name": "GPT-4o mini",
+          "modelId": "gpt-4o-mini",
+          "pricing": {
+            "inputTokens": 0.00015,
+            "outputTokens": 0.0006,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "eastus",
+            "westus",
+            "westeurope"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cursor",
+      "lastUpdated": "2026-02-15T10:23:41.531792Z",
+      "models": [
+        {
+          "name": "Cursor Pro",
+          "modelId": "cursor-pro",
+          "pricing": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "unit": "per month",
+            "currency": "USD"
+          },
+          "notes": "$20/month subscription with usage limits"
+        }
+      ]
+    },
+    {
+      "name": "GCP Vertex AI",
+      "lastUpdated": "2026-02-15T10:23:41.559471Z",
+      "models": [
+        {
+          "name": "Gemini 1.5 Pro",
+          "modelId": "gemini-1.5-pro",
+          "pricing": {
+            "inputTokens": 0.00125,
+            "outputTokens": 0.005,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini 1.5 Flash",
+          "modelId": "gemini-1.5-flash",
+          "pricing": {
+            "inputTokens": 7.5e-05,
+            "outputTokens": 0.0003,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GitHub Copilot",
+      "lastUpdated": "2026-02-15T10:23:41.504804Z",
+      "models": [
+        {
+          "name": "GitHub Copilot (Individual)",
+          "modelId": "github-copilot-individual",
+          "pricing": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "unit": "per month",
+            "currency": "USD"
+          },
+          "notes": "$10/month subscription, unlimited usage"
+        }
+      ]
+    },
+    {
+      "name": "OpenAI",
+      "lastUpdated": "2026-02-15T10:23:41.477326Z",
+      "models": [
+        {
+          "name": "GPT-4o",
+          "modelId": "gpt-4o",
+          "pricing": {
+            "inputTokens": 0.0025,
+            "outputTokens": 0.01,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          }
+        },
+        {
+          "name": "GPT-4o mini",
+          "modelId": "gpt-4o-mini",
+          "pricing": {
+            "inputTokens": 0.00015,
+            "outputTokens": 0.0006,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          }
+        },
+        {
+          "name": "o1",
+          "modelId": "o1",
+          "pricing": {
+            "inputTokens": 0.015,
+            "outputTokens": 0.06,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          }
+        },
+        {
+          "name": "o1-mini",
+          "modelId": "o1-mini",
+          "pricing": {
+            "inputTokens": 0.003,
+            "outputTokens": 0.012,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          }
+        }
+      ]
+    }
+  ]
+}

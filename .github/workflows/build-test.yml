@@ -1,0 +1,76 @@
+name: Build and Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  # Also run on pushes to non-main branches for testing
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Check build output
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "::error::Build did not create dist directory"
+            exit 1
+          fi
+          if [ ! -f "dist/index.html" ]; then
+            echo "::error::Build did not create index.html"
+            exit 1
+          fi
+          echo "✓ Build successful"
+
+  validate-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check if pricing.json changed
+        id: data-changed
+        uses: tj-actions/changed-files@v44
+        with:
+          files: data/pricing.json
+
+      - name: Validate pricing data
+        if: steps.data-changed.outputs.any_changed == 'true'
+        run: |
+          echo "Pricing data changed, running validation..."
+          python scripts/validate_data.py
+
+      - name: Skip validation
+        if: steps.data-changed.outputs.any_changed != 'true'
+        run: |
+          echo "Pricing data unchanged, skipping validation"

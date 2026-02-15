@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Model Inference Cost Comparison</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AI Model Inference Cost Comparison</h1>
+      <p class="subtitle">Compare pricing across different AI providers and models</p>
+      <p class="last-updated" id="lastUpdated">Loading...</p>
+    </header>
+
+    <div class="controls">
+      <div class="filters">
+        <div class="filter-group">
+          <label for="providerFilter">Provider:</label>
+          <select id="providerFilter">
+            <option value="">All Providers</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="regionFilter">Region:</label>
+          <select id="regionFilter">
+            <option value="">All Regions</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="searchBox">Search:</label>
+          <input type="text" id="searchBox" placeholder="Search models...">
+        </div>
+
+        <button id="clearFilters" class="btn-clear">Clear Filters</button>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table id="pricingTable">
+        <thead>
+          <tr>
+            <th data-sort="provider">
+              Provider
+              <span class="sort-arrow"></span>
+            </th>
+            <th data-sort="model">
+              Model
+              <span class="sort-arrow"></span>
+            </th>
+            <th data-sort="input">
+              Input Cost
+              <span class="sort-arrow"></span>
+            </th>
+            <th data-sort="output">
+              Output Cost
+              <span class="sort-arrow"></span>
+            </th>
+            <th data-sort="regions">
+              Regions
+              <span class="sort-arrow"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr>
+            <td colspan="5" class="loading">Loading pricing data...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <p>
+        Data updated automatically via GitHub Actions.
+        <a href="https://github.com/tomron/model-inference-info" target="_blank">View on GitHub</a>
+      </p>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

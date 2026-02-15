@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Model Pricing Data Schema",
+  "description": "Schema for AI inference pricing comparison data",
+  "type": "object",
+  "required": ["lastUpdated", "providers"],
+  "properties": {
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the most recent data update"
+    },
+    "providers": {
+      "type": "array",
+      "description": "List of AI model providers",
+      "items": {
+        "type": "object",
+        "required": ["name", "lastUpdated", "models"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Provider name (e.g., 'AWS Bedrock', 'Anthropic')"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp of when this provider's data was last updated"
+          },
+          "models": {
+            "type": "array",
+            "description": "List of models from this provider",
+            "items": {
+              "type": "object",
+              "required": ["name", "modelId", "pricing"],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Human-readable model name"
+                },
+                "modelId": {
+                  "type": "string",
+                  "description": "Technical model identifier used by the provider"
+                },
+                "pricing": {
+                  "type": "object",
+                  "required": ["inputTokens", "outputTokens", "unit", "currency"],
+                  "properties": {
+                    "inputTokens": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Cost per unit for input tokens"
+                    },
+                    "outputTokens": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Cost per unit for output tokens"
+                    },
+                    "unit": {
+                      "type": "string",
+                      "description": "Pricing unit (e.g., 'per 1K tokens', 'per 1M tokens')"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "pattern": "^[A-Z]{3}$",
+                      "description": "Three-letter currency code (e.g., 'USD')"
+                    }
+                  }
+                },
+                "regions": {
+                  "type": "array",
+                  "description": "Optional list of supported regions",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "notes": {
+                  "type": "string",
+                  "description": "Optional notes about pricing (e.g., 'Volume discounts available')"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "model-inference-info",
+  "version": "1.0.0",
+  "description": "AI Model Inference Cost Comparison Site",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomron/model-inference-info.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomron/model-inference-info/issues"
+  },
+  "homepage": "https://github.com/tomron/model-inference-info#readme",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}

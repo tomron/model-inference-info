@@ -1,0 +1,62 @@
+name: Update Pricing Data
+
+on:
+  # Run daily at 6 AM UTC
+  schedule:
+    - cron: '0 6 * * *'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-pricing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run data collection scripts
+        id: collect
+        continue-on-error: true
+        run: |
+          python scripts/collect_all.py
+
+      - name: Validate pricing data
+        id: validate
+        if: steps.collect.outcome == 'success'
+        run: |
+          python scripts/validate_data.py
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --quiet data/pricing.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changed
+        if: steps.validate.outcome == 'success' && steps.git-check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/pricing.json
+          git commit -m "Update pricing data - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          git push
+
+      - name: Report failure
+        if: steps.collect.outcome == 'failure' || steps.validate.outcome == 'failure'
+        run: |
+          echo "::error::Data collection or validation failed"
+          exit 1
