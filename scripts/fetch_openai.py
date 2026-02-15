@@ -44,43 +44,47 @@ def fetch_pricing_data():
 
         for row in rows:
             cells = row.find_all(['td', 'th'])
-            if len(cells) < 2:
+            if len(cells) < 3:  # Need at least model, input price, output price
                 continue
 
-            row_text = ' '.join(cell.get_text().strip() for cell in cells)
+            # Get text from each cell
+            cell_texts = [cell.get_text().strip() for cell in cells]
+
+            # First cell should be the model name
+            model_name_raw = cell_texts[0]
 
             # Skip header rows
-            if 'model' in row_text.lower() and ('input' in row_text.lower() or 'price' in row_text.lower()):
+            if 'model' in model_name_raw.lower() and any(h in ' '.join(cell_texts).lower() for h in ['input', 'output', 'price']):
                 continue
 
-            # Look for rows with GPT or model names and pricing
-            if any(keyword in row_text.lower() for keyword in ['gpt', 'o1', 'o3', 'davinci', 'turbo']):
-                # Extract prices - look for dollar amounts
-                prices = re.findall(r'\$(\d+\.?\d+)', row_text)
+            # Must start with known model prefixes (be strict to avoid garbage)
+            if not re.match(r'^(GPT-4|GPT-3\.5|o1|o3)', model_name_raw, re.IGNORECASE):
+                continue
 
-                if len(prices) >= 2:
-                    # Try to extract model name from first cell
-                    model_name_cell = cells[0].get_text().strip()
+            # Extract model name - only the first part before any additional info
+            # Matches: GPT-4o, GPT-4o mini, GPT-3.5 Turbo, o1, o1-mini, o1-preview, o3-mini
+            model_match = re.match(r'^((?:GPT-4o?(?:\s+mini)?|GPT-3\.5(?:\s+Turbo)?|o1(?:-mini|-preview)?|o3(?:-mini)?)(?:\s+\d{4}-\d{2}-\d{2})?)', model_name_raw, re.IGNORECASE)
+            if not model_match:
+                continue
 
-                    # Clean up model name
-                    model_name = re.sub(r'\s+', ' ', model_name_cell).strip()
+            model_name = model_match.group(1).strip()
 
-                    # Skip if empty, too short, or looks like a header
-                    if not model_name or len(model_name) < 2:
-                        continue
+            # Look for prices in the row - they might be in any column
+            row_text = ' '.join(cell_texts)
+            prices = re.findall(r'\$?(\d+\.?\d+)', row_text)
 
-                    # Skip common non-model texts
-                    if model_name.lower() in ['model', 'pricing', 'input', 'output', 'per', 'tokens']:
-                        continue
+            # Filter out small numbers that are likely not prices (like "4" from "GPT-4")
+            prices = [p for p in prices if float(p) >= 0.0001]
 
-                    # Create model ID from name
-                    model_id = model_name.lower().replace(' ', '-').replace('/', '-')
+            if len(prices) >= 2:
+                try:
+                    input_cost = float(prices[0])
+                    output_cost = float(prices[1])
 
-                    try:
-                        input_cost = float(prices[0])
-                        output_cost = float(prices[1])
+                    # Sanity check: prices should be reasonable (between $0.0001 and $100 per 1K tokens)
+                    if 0.0001 <= input_cost <= 100 and 0.0001 <= output_cost <= 100:
+                        model_id = model_name.lower().replace(' ', '-').replace('.', '-')
 
-                        # Add to found models
                         if model_name not in found_models:
                             found_models[model_name] = {
                                 'name': model_name,
@@ -92,37 +96,8 @@ def fetch_pricing_data():
                                     'currency': 'USD'
                                 }
                             }
-                    except (ValueError, IndexError):
-                        continue
-
-    # Also scan page text for model patterns
-    all_text = soup.get_text()
-
-    # Pattern to match model names followed by pricing
-    # e.g., "GPT-4o $2.50 $10.00" or "o1-mini $3.00 $12.00"
-    model_pattern = r'((?:GPT-?|o)[\w.-]+(?:\s+mini|\s+turbo)?)[^\$]*?\$(\d+\.?\d+)[^\$]*?\$(\d+\.?\d+)'
-    matches = re.finditer(model_pattern, all_text, re.IGNORECASE)
-
-    for match in matches:
-        model_name = match.group(1).strip()
-        input_cost = float(match.group(2))
-        output_cost = float(match.group(3))
-
-        # Normalize model name
-        model_name = re.sub(r'\s+', ' ', model_name)
-        model_id = model_name.lower().replace(' ', '-')
-
-        if model_name not in found_models:
-            found_models[model_name] = {
-                'name': model_name,
-                'modelId': model_id,
-                'pricing': {
-                    'inputTokens': input_cost,
-                    'outputTokens': output_cost,
-                    'unit': 'per 1K tokens',
-                    'currency': 'USD'
-                }
-            }
+                except (ValueError, IndexError):
+                    continue
 
     models = list(found_models.values())
 
@@ -146,6 +121,16 @@ def fetch_pricing_data():
                 'pricing': {
                     'inputTokens': 0.00015,
                     'outputTokens': 0.0006,
+                    'unit': 'per 1K tokens',
+                    'currency': 'USD'
+                }
+            },
+            {
+                'name': 'GPT-3.5 Turbo',
+                'modelId': 'gpt-3-5-turbo',
+                'pricing': {
+                    'inputTokens': 0.0005,
+                    'outputTokens': 0.0015,
                     'unit': 'per 1K tokens',
                     'currency': 'USD'
                 }
