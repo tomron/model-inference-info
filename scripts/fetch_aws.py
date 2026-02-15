@@ -44,80 +44,110 @@ def fetch_pricing_data():
         products = data.get('products', {})
         terms = data.get('terms', {}).get('OnDemand', {})
 
-        # Track models we've found
+        # Track models we've found (key: (model_name, region))
         model_pricing = {}
 
         for product_id, product_info in products.items():
             attributes = product_info.get('attributes', {})
 
-            # Look for Anthropic Claude models
+            # Get model information
             model_name = attributes.get('modelName', '')
+            model_id_attr = attributes.get('modelId', '')
             operation = attributes.get('operation', '')
+            location = attributes.get('location', '')
 
-            # Filter for inference operations
-            if 'Inference' in operation or 'InvokeModel' in operation:
-                # Get pricing from terms
-                if product_id in terms:
-                    price_dimensions = list(terms[product_id].values())[0].get('priceDimensions', {})
+            # Filter for inference operations only
+            if not ('Inference' in operation or 'InvokeModel' in operation):
+                continue
 
-                    for dimension in price_dimensions.values():
-                        price_per_unit = float(dimension.get('pricePerUnit', {}).get('USD', 0))
-                        unit = dimension.get('unit', '')
-                        description = dimension.get('description', '')
+            # Skip if no model name
+            if not model_name:
+                continue
 
-                        # Determine if this is input or output tokens
-                        is_input = 'input' in description.lower() or 'request' in description.lower()
-                        is_output = 'output' in description.lower() or 'response' in description.lower()
+            # Get pricing from terms
+            if product_id in terms:
+                price_dimensions = list(terms[product_id].values())[0].get('priceDimensions', {})
 
-                        if model_name and (is_input or is_output):
-                            if model_name not in model_pricing:
-                                model_pricing[model_name] = {
-                                    'attributes': attributes,
-                                    'input': None,
-                                    'output': None
-                                }
+                for dimension in price_dimensions.values():
+                    price_per_unit = float(dimension.get('pricePerUnit', {}).get('USD', 0))
+                    description = dimension.get('description', '')
 
-                            if is_input:
-                                model_pricing[model_name]['input'] = price_per_unit
-                            elif is_output:
-                                model_pricing[model_name]['output'] = price_per_unit
+                    # Determine if this is input or output tokens
+                    is_input = 'input' in description.lower() or 'request' in description.lower()
+                    is_output = 'output' in description.lower() or 'response' in description.lower()
 
-        # Convert to our format
-        for model_name, pricing_info in model_pricing.items():
+                    if model_name and (is_input or is_output):
+                        # Use model_name + region as key to handle regional variations
+                        key = (model_name, location)
+
+                        if key not in model_pricing:
+                            model_pricing[key] = {
+                                'name': model_name,
+                                'model_id': model_id_attr if model_id_attr else model_name.lower().replace(' ', '-'),
+                                'location': location,
+                                'input': None,
+                                'output': None
+                            }
+
+                        if is_input:
+                            model_pricing[key]['input'] = price_per_unit
+                        elif is_output:
+                            model_pricing[key]['output'] = price_per_unit
+
+        # Map AWS location names to region codes
+        region_map = {
+            'US East (N. Virginia)': 'us-east-1',
+            'US West (Oregon)': 'us-west-2',
+            'EU (Ireland)': 'eu-west-1',
+            'EU (Frankfurt)': 'eu-central-1',
+            'EU (London)': 'eu-west-2',
+            'EU (Paris)': 'eu-west-3',
+            'Asia Pacific (Singapore)': 'ap-southeast-1',
+            'Asia Pacific (Tokyo)': 'ap-northeast-1',
+            'Asia Pacific (Mumbai)': 'ap-south-1',
+            'Asia Pacific (Sydney)': 'ap-southeast-2',
+            'Canada (Central)': 'ca-central-1',
+            'South America (Sao Paulo)': 'sa-east-1',
+        }
+
+        # Aggregate models by name, collecting all regions
+        models_by_name = {}
+
+        for (model_name, location), pricing_info in model_pricing.items():
             if pricing_info['input'] is not None and pricing_info['output'] is not None:
-                # Get model ID from attributes
-                model_id = pricing_info['attributes'].get('modelId', model_name.lower().replace(' ', '-'))
-
-                # Get regions
-                location = pricing_info['attributes'].get('location', '')
-                regions = []
-                if location:
-                    # Map AWS location names to region codes
-                    region_map = {
-                        'US East (N. Virginia)': 'us-east-1',
-                        'US West (Oregon)': 'us-west-2',
-                        'EU (Ireland)': 'eu-west-1',
-                        'Asia Pacific (Singapore)': 'ap-southeast-1',
-                        'Asia Pacific (Tokyo)': 'ap-northeast-1',
+                if model_name not in models_by_name:
+                    models_by_name[model_name] = {
+                        'name': model_name,
+                        'modelId': pricing_info['model_id'],
+                        'pricing': {
+                            'inputTokens': pricing_info['input'],
+                            'outputTokens': pricing_info['output'],
+                            'unit': 'per 1K tokens',
+                            'currency': 'USD'
+                        },
+                        'regions': set()
                     }
-                    if location in region_map:
-                        regions.append(region_map[location])
 
-                models.append({
-                    'name': model_name,
-                    'modelId': model_id,
-                    'pricing': {
-                        'inputTokens': pricing_info['input'],
-                        'outputTokens': pricing_info['output'],
-                        'unit': 'per 1K tokens',
-                        'currency': 'USD'
-                    },
-                    'regions': regions if regions else None
-                })
-                pricing_found = True
+                # Add region if location is mapped
+                if location in region_map:
+                    models_by_name[model_name]['regions'].add(region_map[location])
+
+        # Convert sets to sorted lists
+        for model in models_by_name.values():
+            model['regions'] = sorted(list(model['regions']))
+            if not model['regions']:
+                del model['regions']  # Remove empty regions
+            models.append(model)
+
+        pricing_found = len(models) > 0
+
+        if pricing_found:
+            print(f"✓ Discovered {len(models)} models from AWS Price List API")
 
     except Exception as e:
         print(f"⚠️  Error fetching from AWS API: {e}")
+        import traceback
+        traceback.print_exc()
 
     # Fallback to known pricing if API fetch failed
     if not pricing_found:

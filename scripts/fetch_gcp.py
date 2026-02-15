@@ -25,7 +25,7 @@ def fetch_pricing_data():
     }
 
     models = []
-    pricing_found = False
+    found_models = {}
 
     try:
         response = requests.get(url, headers=headers, timeout=10)
@@ -45,47 +45,89 @@ def fetch_pricing_data():
 
                 row_text = ' '.join(cell.get_text().strip() for cell in cells)
 
-                # Look for Gemini models
-                if 'gemini' in row_text.lower():
+                # Skip header rows
+                if 'model' in row_text.lower() and 'price' in row_text.lower():
+                    continue
+
+                # Look for any model with pricing (Gemini, PaLM, etc.)
+                if any(keyword in row_text.lower() for keyword in ['gemini', 'palm', 'bison', 'gecko']):
                     prices = re.findall(r'\$(\d+\.?\d*)', row_text)
 
                     if len(prices) >= 2:
-                        # Extract model name
-                        model_name = None
-                        if 'gemini 1.5 pro' in row_text.lower() or 'gemini-1.5-pro' in row_text.lower():
-                            model_name = 'Gemini 1.5 Pro'
-                            model_id = 'gemini-1.5-pro'
-                        elif 'gemini 1.5 flash' in row_text.lower() or 'gemini-1.5-flash' in row_text.lower():
-                            model_name = 'Gemini 1.5 Flash'
-                            model_id = 'gemini-1.5-flash'
+                        # Extract model name from first cell
+                        model_name_cell = cells[0].get_text().strip()
+                        model_name = re.sub(r'\s+', ' ', model_name_cell).strip()
 
-                        if model_name and not any(m['modelId'] == model_id for m in models):
+                        # Skip if empty or too short
+                        if not model_name or len(model_name) < 3:
+                            continue
+
+                        # Create model ID from name
+                        model_id = model_name.lower().replace(' ', '-').replace('.', '-')
+
+                        try:
                             input_cost = float(prices[0])
                             output_cost = float(prices[1])
 
-                            # GCP pricing often in per 1M tokens, convert to per 1K
-                            if 'million' in row_text.lower() or '1m' in row_text.lower():
+                            # GCP pricing often in per 1M tokens, convert to per 1K if needed
+                            if 'million' in row_text.lower() or '1m' in row_text.lower() or '1,000,000' in row_text:
                                 input_cost /= 1000
                                 output_cost /= 1000
 
-                            models.append({
-                                'name': model_name,
-                                'modelId': model_id,
-                                'pricing': {
-                                    'inputTokens': input_cost,
-                                    'outputTokens': output_cost,
-                                    'unit': 'per 1K tokens',
-                                    'currency': 'USD'
-                                },
-                                'regions': ['us-central1', 'us-east4', 'europe-west1', 'asia-southeast1']
-                            })
-                            pricing_found = True
+                            if model_name not in found_models:
+                                found_models[model_name] = {
+                                    'name': model_name,
+                                    'modelId': model_id,
+                                    'pricing': {
+                                        'inputTokens': input_cost,
+                                        'outputTokens': output_cost,
+                                        'unit': 'per 1K tokens',
+                                        'currency': 'USD'
+                                    },
+                                    'regions': ['us-central1', 'us-east4', 'europe-west1', 'asia-southeast1']
+                                }
+                        except (ValueError, IndexError):
+                            continue
+
+        # Also scan page text for model patterns
+        all_text = soup.get_text()
+
+        # Pattern for Gemini models with pricing
+        gemini_pattern = r'(Gemini[\s\w.-]+?)\s+.*?\$(\d+\.?\d+).*?\$(\d+\.?\d+)'
+        matches = re.finditer(gemini_pattern, all_text, re.IGNORECASE | re.MULTILINE)
+
+        for match in matches:
+            model_name = match.group(1).strip()
+            model_name = re.sub(r'\s+', ' ', model_name)
+
+            if model_name not in found_models and len(model_name) > 3:
+                try:
+                    input_cost = float(match.group(2))
+                    output_cost = float(match.group(3))
+
+                    model_id = model_name.lower().replace(' ', '-').replace('.', '-')
+
+                    found_models[model_name] = {
+                        'name': model_name,
+                        'modelId': model_id,
+                        'pricing': {
+                            'inputTokens': input_cost,
+                            'outputTokens': output_cost,
+                            'unit': 'per 1K tokens',
+                            'currency': 'USD'
+                        },
+                        'regions': ['us-central1', 'europe-west1']
+                    }
+                except (ValueError, IndexError):
+                    continue
+
+        models = list(found_models.values())
 
     except Exception as e:
         print(f"⚠️  Error scraping GCP pricing: {e}")
 
     # Fallback to known pricing
-    if not pricing_found:
+    if not models:
         print("⚠️  Using known pricing as fallback")
         models = [
             {
@@ -111,6 +153,8 @@ def fetch_pricing_data():
                 'regions': ['us-central1', 'europe-west1']
             }
         ]
+    else:
+        print(f"✓ Discovered {len(models)} models from pricing page")
 
     return {
         'name': 'GCP Vertex AI',

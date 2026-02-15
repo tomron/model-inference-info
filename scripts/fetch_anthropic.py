@@ -34,72 +34,107 @@ def fetch_pricing_data():
     soup = BeautifulSoup(response.text, 'html.parser')
 
     models = []
+    found_models = {}  # Track models by name to avoid duplicates
 
-    # Try to find pricing information in the page
-    # Anthropic's pricing page structure may vary, so we'll use multiple strategies
-
-    # Strategy 1: Look for model names and prices in text
-    text = soup.get_text()
-
-    # Known Anthropic models and their typical pricing (fallback if scraping fails)
-    # We'll try to find these in the page content
-    known_models = {
-        'Claude 3.5 Sonnet': {
-            'modelId': 'claude-3-5-sonnet-20241022',
-            'inputPattern': r'claude.*3\.?5.*sonnet.*?input.*?\$?(\d+\.?\d*)',
-            'outputPattern': r'claude.*3\.?5.*sonnet.*?output.*?\$?(\d+\.?\d*)',
-        },
-        'Claude 3.5 Haiku': {
-            'modelId': 'claude-3-5-haiku-20241022',
-            'inputPattern': r'claude.*3\.?5.*haiku.*?input.*?\$?(\d+\.?\d*)',
-            'outputPattern': r'claude.*3\.?5.*haiku.*?output.*?\$?(\d+\.?\d*)',
-        },
-        'Claude 3 Opus': {
-            'modelId': 'claude-3-opus-20240229',
-            'inputPattern': r'claude.*3.*opus.*?input.*?\$?(\d+\.?\d*)',
-            'outputPattern': r'claude.*3.*opus.*?output.*?\$?(\d+\.?\d*)',
-        },
-    }
-
-    # Try to extract pricing from the page
-    # Look for table rows or structured data
+    # Strategy 1: Look for pricing tables
     tables = soup.find_all('table')
-    pricing_found = False
 
     for table in tables:
         rows = table.find_all('tr')
+
         for row in rows:
             cells = row.find_all(['td', 'th'])
-            row_text = ' '.join(cell.get_text().strip() for cell in cells).lower()
+            if len(cells) < 3:  # Need at least model name, input price, output price
+                continue
 
-            # Check if this row contains Claude model pricing
-            for model_name, model_info in known_models.items():
-                if any(keyword in row_text for keyword in ['claude', 'sonnet', 'haiku', 'opus']):
-                    # Try to extract prices
-                    price_pattern = r'\$?(\d+\.?\d+)'
-                    prices = re.findall(price_pattern, row_text)
+            row_text = ' '.join(cell.get_text().strip() for cell in cells)
 
-                    if len(prices) >= 2:
-                        # Assume first price is input, second is output
+            # Skip header rows
+            if 'model' in row_text.lower() and 'input' in row_text.lower():
+                continue
+
+            # Look for rows that contain "Claude" and pricing
+            if 'claude' in row_text.lower():
+                # Extract all prices from the row
+                prices = re.findall(r'\$?(\d+\.?\d+)', row_text)
+
+                if len(prices) >= 2:
+                    # Try to extract model name from first cell
+                    model_name_cell = cells[0].get_text().strip()
+
+                    # Clean up model name
+                    model_name = re.sub(r'\s+', ' ', model_name_cell).strip()
+
+                    # Skip if empty or looks like a header
+                    if not model_name or len(model_name) < 3:
+                        continue
+
+                    # Create model ID from name
+                    model_id = model_name.lower().replace(' ', '-').replace('.', '-')
+
+                    # Parse prices
+                    try:
                         input_cost = float(prices[0])
                         output_cost = float(prices[1])
 
-                        # Check if this matches our model
-                        if model_name.lower() in row_text:
-                            models.append({
+                        # Add to found models
+                        if model_name not in found_models:
+                            found_models[model_name] = {
                                 'name': model_name,
-                                'modelId': model_info['modelId'],
+                                'modelId': model_id,
                                 'pricing': {
                                     'inputTokens': input_cost,
                                     'outputTokens': output_cost,
                                     'unit': 'per 1K tokens',
                                     'currency': 'USD'
                                 }
-                            })
-                            pricing_found = True
+                            }
+                    except (ValueError, IndexError):
+                        continue
 
-    # Fallback: Use current known pricing if scraping didn't work
-    if not pricing_found:
+    # Strategy 2: Look for structured data or JSON-LD
+    scripts = soup.find_all('script', type='application/ld+json')
+    for script in scripts:
+        try:
+            data = json.loads(script.string)
+            # Parse structured data if it contains pricing info
+            # This is a placeholder - structure varies by site
+        except:
+            pass
+
+    # Strategy 3: Look for divs/sections with pricing information
+    # Search for any element containing "claude" and price patterns
+    all_text = soup.get_text()
+
+    # Find all mentions of Claude models with nearby pricing
+    claude_pattern = r'(Claude\s+[\d.]+\s+\w+(?:\s+\w+)?)[^\$]*?\$(\d+\.?\d+)[^\$]*?\$(\d+\.?\d+)'
+    matches = re.finditer(claude_pattern, all_text, re.IGNORECASE | re.MULTILINE)
+
+    for match in matches:
+        model_name = match.group(1).strip()
+        input_cost = float(match.group(2))
+        output_cost = float(match.group(3))
+
+        # Normalize model name
+        model_name = re.sub(r'\s+', ' ', model_name)
+        model_id = model_name.lower().replace(' ', '-').replace('.', '-')
+
+        if model_name not in found_models:
+            found_models[model_name] = {
+                'name': model_name,
+                'modelId': model_id,
+                'pricing': {
+                    'inputTokens': input_cost,
+                    'outputTokens': output_cost,
+                    'unit': 'per 1K tokens',
+                    'currency': 'USD'
+                }
+            }
+
+    models = list(found_models.values())
+
+    # If no models found, use fallback
+    if not models:
         print("⚠️  Could not scrape pricing from page, using known pricing as fallback")
         models = [
             {
@@ -133,6 +168,8 @@ def fetch_pricing_data():
                 }
             }
         ]
+    else:
+        print(f"✓ Discovered {len(models)} models from pricing page")
 
     return {
         'name': 'Anthropic',

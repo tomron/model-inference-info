@@ -25,7 +25,7 @@ def fetch_pricing_data():
     }
 
     models = []
-    pricing_found = False
+    found_models = {}
 
     try:
         response = requests.get(url, headers=headers, timeout=10)
@@ -45,47 +45,85 @@ def fetch_pricing_data():
 
                 row_text = ' '.join(cell.get_text().strip() for cell in cells)
 
-                # Look for GPT-4o pricing
-                if 'gpt-4o' in row_text.lower() and 'mini' not in row_text.lower():
+                # Skip header rows
+                if 'model' in row_text.lower() and 'price' in row_text.lower():
+                    continue
+
+                # Look for rows with model names (GPT, o1, etc.) and pricing
+                if any(keyword in row_text.lower() for keyword in ['gpt', 'o1', 'o3', 'davinci', 'turbo']):
                     prices = re.findall(r'\$(\d+\.?\d*)', row_text)
 
-                    if len(prices) >= 2 and not any(m['modelId'] == 'gpt-4o' for m in models):
-                        models.append({
-                            'name': 'GPT-4o',
-                            'modelId': 'gpt-4o',
-                            'pricing': {
-                                'inputTokens': float(prices[0]),
-                                'outputTokens': float(prices[1]),
-                                'unit': 'per 1K tokens',
-                                'currency': 'USD'
-                            },
-                            'regions': ['eastus', 'westus', 'westeurope', 'japaneast']
-                        })
-                        pricing_found = True
+                    if len(prices) >= 2:
+                        # Extract model name from first cell
+                        model_name_cell = cells[0].get_text().strip()
+                        model_name = re.sub(r'\s+', ' ', model_name_cell).strip()
 
-                # Look for GPT-4o mini pricing
-                elif 'gpt-4o' in row_text.lower() and 'mini' in row_text.lower():
-                    prices = re.findall(r'\$(\d+\.?\d*)', row_text)
+                        # Skip if empty, too short, or looks like a header
+                        if not model_name or len(model_name) < 2:
+                            continue
 
-                    if len(prices) >= 2 and not any(m['modelId'] == 'gpt-4o-mini' for m in models):
-                        models.append({
-                            'name': 'GPT-4o mini',
-                            'modelId': 'gpt-4o-mini',
-                            'pricing': {
-                                'inputTokens': float(prices[0]),
-                                'outputTokens': float(prices[1]),
-                                'unit': 'per 1K tokens',
-                                'currency': 'USD'
-                            },
-                            'regions': ['eastus', 'westus', 'westeurope']
-                        })
-                        pricing_found = True
+                        # Skip common non-model texts
+                        if model_name.lower() in ['model', 'pricing', 'input', 'output', 'per', 'tokens']:
+                            continue
+
+                        # Create model ID from name
+                        model_id = model_name.lower().replace(' ', '-').replace('/', '-')
+
+                        try:
+                            input_cost = float(prices[0])
+                            output_cost = float(prices[1])
+
+                            if model_name not in found_models:
+                                found_models[model_name] = {
+                                    'name': model_name,
+                                    'modelId': model_id,
+                                    'pricing': {
+                                        'inputTokens': input_cost,
+                                        'outputTokens': output_cost,
+                                        'unit': 'per 1K tokens',
+                                        'currency': 'USD'
+                                    },
+                                    'regions': ['eastus', 'westus', 'westeurope', 'japaneast']
+                                }
+                        except (ValueError, IndexError):
+                            continue
+
+        # Also scan page text for model patterns
+        all_text = soup.get_text()
+
+        # Pattern to match model names followed by pricing
+        model_pattern = r'((?:GPT-?|o)[\w.-]+(?:\s+mini|\s+turbo)?)[^\$]*?\$(\d+\.?\d+)[^\$]*?\$(\d+\.?\d+)'
+        matches = re.finditer(model_pattern, all_text, re.IGNORECASE)
+
+        for match in matches:
+            model_name = match.group(1).strip()
+            input_cost = float(match.group(2))
+            output_cost = float(match.group(3))
+
+            # Normalize model name
+            model_name = re.sub(r'\s+', ' ', model_name)
+            model_id = model_name.lower().replace(' ', '-')
+
+            if model_name not in found_models:
+                found_models[model_name] = {
+                    'name': model_name,
+                    'modelId': model_id,
+                    'pricing': {
+                        'inputTokens': input_cost,
+                        'outputTokens': output_cost,
+                        'unit': 'per 1K tokens',
+                        'currency': 'USD'
+                    },
+                    'regions': ['eastus', 'westus', 'westeurope']
+                }
+
+        models = list(found_models.values())
 
     except Exception as e:
         print(f"⚠️  Error scraping Azure OpenAI pricing: {e}")
 
     # Fallback to known pricing
-    if not pricing_found:
+    if not models:
         print("⚠️  Using known pricing as fallback")
         models = [
             {
@@ -111,6 +149,8 @@ def fetch_pricing_data():
                 'regions': ['eastus', 'westus', 'westeurope']
             }
         ]
+    else:
+        print(f"✓ Discovered {len(models)} models from pricing page")
 
     return {
         'name': 'Azure OpenAI',
