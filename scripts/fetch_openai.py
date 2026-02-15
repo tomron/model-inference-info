@@ -28,8 +28,65 @@ def fetch_pricing_data():
         response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
     except requests.RequestException as e:
-        print(f"✗ Error fetching OpenAI pricing page: {e}")
-        raise
+        print(f"⚠️  Error fetching OpenAI pricing page: {e}")
+        print("⚠️  Using known pricing as fallback")
+        # Return fallback data instead of raising
+        return {
+            'name': 'OpenAI',
+            'lastUpdated': current_time,
+            'models': [
+                {
+                    'name': 'GPT-4o',
+                    'modelId': 'gpt-4o',
+                    'pricing': {
+                        'inputTokens': 0.0025,
+                        'outputTokens': 0.01,
+                        'unit': 'per 1K tokens',
+                        'currency': 'USD'
+                    }
+                },
+                {
+                    'name': 'GPT-4o mini',
+                    'modelId': 'gpt-4o-mini',
+                    'pricing': {
+                        'inputTokens': 0.00015,
+                        'outputTokens': 0.0006,
+                        'unit': 'per 1K tokens',
+                        'currency': 'USD'
+                    }
+                },
+                {
+                    'name': 'GPT-3.5 Turbo',
+                    'modelId': 'gpt-3-5-turbo',
+                    'pricing': {
+                        'inputTokens': 0.0005,
+                        'outputTokens': 0.0015,
+                        'unit': 'per 1K tokens',
+                        'currency': 'USD'
+                    }
+                },
+                {
+                    'name': 'o1',
+                    'modelId': 'o1',
+                    'pricing': {
+                        'inputTokens': 0.015,
+                        'outputTokens': 0.06,
+                        'unit': 'per 1K tokens',
+                        'currency': 'USD'
+                    }
+                },
+                {
+                    'name': 'o1-mini',
+                    'modelId': 'o1-mini',
+                    'pricing': {
+                        'inputTokens': 0.003,
+                        'outputTokens': 0.012,
+                        'unit': 'per 1K tokens',
+                        'currency': 'USD'
+                    }
+                }
+            ]
+        }
 
     soup = BeautifulSoup(response.text, 'html.parser')
 
