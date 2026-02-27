@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-02-26T06:30:23.215060Z",
+  "lastUpdated": "2026-02-27T06:26:13.809308Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-02-26T06:29:59.273282Z",
+      "lastUpdated": "2026-02-27T06:25:50.563490Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-02-26T06:29:59.985991Z",
+      "lastUpdated": "2026-02-27T06:25:51.538543Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-02-26T06:30:03.118891Z",
+      "lastUpdated": "2026-02-27T06:25:54.733521Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-02-26T06:30:01.777981Z",
+      "lastUpdated": "2026-02-27T06:25:53.257687Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-02-26T06:30:02.250180Z",
+      "lastUpdated": "2026-02-27T06:25:53.830063Z",
       "models": [
         {
           "name": "Gemini 2.0 Flash Lite",
@@ -308,6 +308,34 @@
           ]
         },
         {
+          "name": "Gemini 3",
+          "modelId": "gemini-3",
+          "pricing": {
+            "inputTokens": 0.134,
+            "outputTokens": 0.24,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        },
+        {
+          "name": "Gemini 3.1",
+          "modelId": "gemini-3-1",
+          "pricing": {
+            "inputTokens": 0.045,
+            "outputTokens": 0.067,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        },
+        {
           "name": "Gemini 1.5 Flash Multimodal Image InputVideo InputText InputAudio Input",
           "modelId": "gemini-1-5-flash-multimodal-image-inputvideo-inputtext-inputaudio-input",
           "pricing": {
@@ -353,7 +381,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-02-26T06:30:01.035007Z",
+      "lastUpdated": "2026-02-27T06:25:52.532417Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -381,7 +409,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-02-26T06:30:00.773498Z",
+      "lastUpdated": "2026-02-27T06:25:52.237185Z",
       "models": [
         {
           "name": "GPT-4o",
