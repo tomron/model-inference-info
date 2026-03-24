@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-03-23T06:37:45.344213Z",
+  "lastUpdated": "2026-03-24T06:33:15.194288Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-03-23T06:37:22.785778Z",
+      "lastUpdated": "2026-03-24T06:32:53.273572Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-03-23T06:37:23.410507Z",
+      "lastUpdated": "2026-03-24T06:32:53.906641Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-03-23T06:37:26.264905Z",
+      "lastUpdated": "2026-03-24T06:32:57.111945Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-03-23T06:37:24.928149Z",
+      "lastUpdated": "2026-03-24T06:32:55.578211Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -139,13 +139,13 @@
             "unit": "per month",
             "currency": "USD"
           },
-          "notes": "$20.0/month subscription with usage limits"
+          "notes": "$60.0/month subscription with usage limits"
         }
       ]
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-03-23T06:37:25.342078Z",
+      "lastUpdated": "2026-03-24T06:32:56.123885Z",
       "models": [
         {
           "name": "Gemini 2.5Flash Image",
@@ -397,7 +397,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-03-23T06:37:24.337079Z",
+      "lastUpdated": "2026-03-24T06:32:54.861932Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -425,7 +425,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-03-23T06:37:24.078031Z",
+      "lastUpdated": "2026-03-24T06:32:54.591405Z",
       "models": [
         {
           "name": "GPT-4o",
