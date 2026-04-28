@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-04-27T07:07:12.457879Z",
+  "lastUpdated": "2026-04-28T07:06:58.203648Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-04-27T07:06:49.530543Z",
+      "lastUpdated": "2026-04-28T07:06:43.571438Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-04-27T07:06:50.460311Z",
+      "lastUpdated": "2026-04-28T07:06:44.375233Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-04-27T07:06:53.377891Z",
+      "lastUpdated": "2026-04-28T07:06:48.111070Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-04-27T07:06:51.644736Z",
+      "lastUpdated": "2026-04-28T07:06:46.278991Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-04-27T07:06:52.130296Z",
+      "lastUpdated": "2026-04-28T07:06:46.835221Z",
       "models": [
         {
           "name": "Gemini 2.5Flash Image",
@@ -445,7 +445,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-04-27T07:06:51.386984Z",
+      "lastUpdated": "2026-04-28T07:06:45.405822Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -456,13 +456,24 @@
             "unit": "per month",
             "currency": "USD"
           },
-          "notes": "$10/month subscription, unlimited usage"
+          "notes": "$0.0/month subscription, unlimited usage"
+        },
+        {
+          "name": "GitHub Copilot (Business)",
+          "modelId": "github-copilot-business",
+          "pricing": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "unit": "per user/month",
+            "currency": "USD"
+          },
+          "notes": "$0.0/user/month subscription"
         }
       ]
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-04-27T07:06:51.134103Z",
+      "lastUpdated": "2026-04-28T07:06:45.113412Z",
       "models": [
         {
           "name": "GPT-4o",
