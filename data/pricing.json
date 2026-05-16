@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-05-15T07:20:32.432134Z",
+  "lastUpdated": "2026-05-16T06:57:24.850174Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-05-15T07:20:08.735138Z",
+      "lastUpdated": "2026-05-16T06:57:02.516302Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-05-15T07:20:09.563570Z",
+      "lastUpdated": "2026-05-16T06:57:03.114051Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-05-15T07:20:13.349588Z",
+      "lastUpdated": "2026-05-16T06:57:06.575671Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-05-15T07:20:11.586790Z",
+      "lastUpdated": "2026-05-16T06:57:05.001167Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,8 +145,24 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-05-15T07:20:12.175348Z",
+      "lastUpdated": "2026-05-16T06:57:05.488750Z",
       "models": [
+        {
+          "name": "Gemini Deep Research Agent",
+          "modelId": "gemini-deep-research-agent",
+          "pricing": {
+            "inputTokens": 2.0,
+            "outputTokens": 0.2,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
         {
           "name": "Gemini 2.5Flash Image",
           "modelId": "gemini-2-5flash-image",
@@ -445,7 +461,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-05-15T07:20:10.825643Z",
+      "lastUpdated": "2026-05-16T06:57:04.309833Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -473,7 +489,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-05-15T07:20:10.424484Z",
+      "lastUpdated": "2026-05-16T06:57:03.876327Z",
       "models": [
         {
           "name": "GPT-4o",
