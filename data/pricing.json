@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-06-30T07:31:53.483600Z",
+  "lastUpdated": "2026-07-01T07:44:08.169275Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-06-30T07:31:30.249634Z",
+      "lastUpdated": "2026-07-01T07:43:53.805422Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-06-30T07:31:30.813488Z",
+      "lastUpdated": "2026-07-01T07:43:54.468184Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-06-30T07:31:34.299710Z",
+      "lastUpdated": "2026-07-01T07:43:58.024136Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-06-30T07:31:32.566732Z",
+      "lastUpdated": "2026-07-01T07:43:56.368177Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-06-30T07:31:33.059680Z",
+      "lastUpdated": "2026-07-01T07:43:56.877689Z",
       "models": [
         {
           "name": "Gemini Deep Research Agent",
@@ -391,8 +391,8 @@
           "name": "Gemini 3",
           "modelId": "gemini-3",
           "pricing": {
-            "inputTokens": 0.0011,
-            "outputTokens": 0.134,
+            "inputTokens": 0.134,
+            "outputTokens": 0.24,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -405,8 +405,8 @@
           "name": "Gemini 3.1",
           "modelId": "gemini-3-1",
           "pricing": {
-            "inputTokens": 0.0006,
-            "outputTokens": 0.045,
+            "inputTokens": 0.045,
+            "outputTokens": 0.067,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -461,7 +461,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-06-30T07:31:32.048267Z",
+      "lastUpdated": "2026-07-01T07:43:55.686618Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -489,7 +489,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-06-30T07:31:31.527675Z",
+      "lastUpdated": "2026-07-01T07:43:55.168900Z",
       "models": [
         {
           "name": "GPT-4o",
