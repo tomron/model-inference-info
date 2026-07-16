@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-07-15T08:25:08.199848Z",
+  "lastUpdated": "2026-07-16T08:24:06.732383Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-07-15T08:24:45.835899Z",
+      "lastUpdated": "2026-07-16T08:23:51.413364Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-07-15T08:24:46.368622Z",
+      "lastUpdated": "2026-07-16T08:23:52.036748Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-07-15T08:24:50.073826Z",
+      "lastUpdated": "2026-07-16T08:23:56.683185Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-07-15T08:24:48.304312Z",
+      "lastUpdated": "2026-07-16T08:23:53.803900Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -139,13 +139,13 @@
             "unit": "per month",
             "currency": "USD"
           },
-          "notes": "$20.0/month subscription with usage limits"
+          "notes": "$16.0/month subscription with usage limits"
         }
       ]
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-07-15T08:24:48.780753Z",
+      "lastUpdated": "2026-07-16T08:23:54.330951Z",
       "models": [
         {
           "name": "Gemini Deep Research Agent",
@@ -493,7 +493,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-07-15T08:24:47.522801Z",
+      "lastUpdated": "2026-07-16T08:23:53.264848Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -504,24 +504,13 @@
             "unit": "per month",
             "currency": "USD"
           },
-          "notes": "$0.0/month subscription, unlimited usage"
-        },
-        {
-          "name": "GitHub Copilot (Business)",
-          "modelId": "github-copilot-business",
-          "pricing": {
-            "inputTokens": 0,
-            "outputTokens": 0,
-            "unit": "per user/month",
-            "currency": "USD"
-          },
-          "notes": "$0.0/user/month subscription"
+          "notes": "$10/month subscription, unlimited usage"
         }
       ]
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-07-15T08:24:47.029535Z",
+      "lastUpdated": "2026-07-16T08:23:52.614302Z",
       "models": [
         {
           "name": "GPT-4o",
