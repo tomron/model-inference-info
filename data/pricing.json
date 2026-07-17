@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-07-16T08:24:06.732383Z",
+  "lastUpdated": "2026-07-17T08:20:18.848119Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-07-16T08:23:51.413364Z",
+      "lastUpdated": "2026-07-17T08:19:55.311487Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-07-16T08:23:52.036748Z",
+      "lastUpdated": "2026-07-17T08:19:56.172201Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-07-16T08:23:56.683185Z",
+      "lastUpdated": "2026-07-17T08:20:00.715057Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-07-16T08:23:53.803900Z",
+      "lastUpdated": "2026-07-17T08:19:58.440606Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -139,13 +139,13 @@
             "unit": "per month",
             "currency": "USD"
           },
-          "notes": "$16.0/month subscription with usage limits"
+          "notes": "$20.0/month subscription with usage limits"
         }
       ]
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-07-16T08:23:54.330951Z",
+      "lastUpdated": "2026-07-17T08:19:59.239617Z",
       "models": [
         {
           "name": "Gemini Deep Research Agent",
@@ -493,7 +493,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-07-16T08:23:53.264848Z",
+      "lastUpdated": "2026-07-17T08:19:57.549240Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -504,13 +504,24 @@
             "unit": "per month",
             "currency": "USD"
           },
-          "notes": "$10/month subscription, unlimited usage"
+          "notes": "$0.0/month subscription, unlimited usage"
+        },
+        {
+          "name": "GitHub Copilot (Business)",
+          "modelId": "github-copilot-business",
+          "pricing": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "unit": "per user/month",
+            "currency": "USD"
+          },
+          "notes": "$0.0/user/month subscription"
         }
       ]
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-07-16T08:23:52.614302Z",
+      "lastUpdated": "2026-07-17T08:19:57.040988Z",
       "models": [
         {
           "name": "GPT-4o",
