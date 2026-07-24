@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-07-23T08:39:30.906928Z",
+  "lastUpdated": "2026-07-24T08:35:18.504342Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-07-23T08:39:07.214614Z",
+      "lastUpdated": "2026-07-24T08:35:03.957928Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-07-23T08:39:07.902722Z",
+      "lastUpdated": "2026-07-24T08:35:04.614847Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-07-23T08:39:11.845524Z",
+      "lastUpdated": "2026-07-24T08:35:08.422807Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-07-23T08:39:09.639669Z",
+      "lastUpdated": "2026-07-24T08:35:06.595335Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-07-23T08:39:10.093777Z",
+      "lastUpdated": "2026-07-24T08:35:07.032986Z",
       "models": [
         {
           "name": "Gemini Deep Research Agent",
@@ -493,7 +493,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-07-23T08:39:08.942795Z",
+      "lastUpdated": "2026-07-24T08:35:05.742168Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -521,7 +521,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-07-23T08:39:08.506863Z",
+      "lastUpdated": "2026-07-24T08:35:05.357732Z",
       "models": [
         {
           "name": "GPT-4o",
