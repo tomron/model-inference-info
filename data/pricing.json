@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-08-03T09:57:50.098461Z",
+  "lastUpdated": "2026-08-04T08:48:09.012676Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-08-03T09:57:27.453801Z",
+      "lastUpdated": "2026-08-04T08:47:46.264395Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-08-03T09:57:28.131996Z",
+      "lastUpdated": "2026-08-04T08:47:47.024973Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-08-03T09:57:31.970998Z",
+      "lastUpdated": "2026-08-04T08:47:50.840974Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-08-03T09:57:30.178949Z",
+      "lastUpdated": "2026-08-04T08:47:48.892621Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-08-03T09:57:30.793151Z",
+      "lastUpdated": "2026-08-04T08:47:49.575802Z",
       "models": [
         {
           "name": "Gemini Deep Research Agent",
@@ -340,8 +340,8 @@
           ]
         },
         {
-          "name": "Gemini 3.1 Flash Lite",
-          "modelId": "gemini-3-1-flash-lite",
+          "name": "Gemini 3.6 Flash, Gemini 3.5 Flash, Gemini 3 Flash",
+          "modelId": "gemini-3-6-flash,-gemini-3-5-flash,-gemini-3-flash",
           "pricing": {
             "inputTokens": 1.0,
             "outputTokens": 1.0,
@@ -356,11 +356,11 @@
           ]
         },
         {
-          "name": "Gemini 3 Pro",
-          "modelId": "gemini-3-pro",
+          "name": "Gemini 3.5 Flash Lite, Gemini 3.1 Flash Lite",
+          "modelId": "gemini-3-5-flash-lite,-gemini-3-1-flash-lite",
           "pricing": {
-            "inputTokens": 4.5,
-            "outputTokens": 4.5,
+            "inputTokens": 1.0,
+            "outputTokens": 1.0,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -509,7 +509,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-08-03T09:57:29.493576Z",
+      "lastUpdated": "2026-08-04T08:47:48.168779Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -537,7 +537,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-08-03T09:57:29.040843Z",
+      "lastUpdated": "2026-08-04T08:47:47.714889Z",
       "models": [
         {
           "name": "GPT-4o",
