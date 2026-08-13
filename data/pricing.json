@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-08-12T07:41:11.350694Z",
+  "lastUpdated": "2026-08-13T07:42:55.798120Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-08-12T07:40:48.910591Z",
+      "lastUpdated": "2026-08-13T07:42:41.682232Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-08-12T07:40:49.704480Z",
+      "lastUpdated": "2026-08-13T07:42:42.388151Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-08-12T07:40:53.277278Z",
+      "lastUpdated": "2026-08-13T07:42:45.653388Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-08-12T07:40:51.212346Z",
+      "lastUpdated": "2026-08-13T07:42:44.029307Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,14 +145,14 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-08-12T07:40:51.840120Z",
+      "lastUpdated": "2026-08-13T07:42:44.592193Z",
       "models": [
         {
           "name": "Gemini 3.1 Pro Preview",
           "modelId": "gemini-3-1-pro-preview",
           "pricing": {
             "inputTokens": 2.0,
-            "outputTokens": 1.8,
+            "outputTokens": 4.0,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -168,7 +168,7 @@
           "modelId": "gemini-3-5-flash",
           "pricing": {
             "inputTokens": 1.5,
-            "outputTokens": 1.35,
+            "outputTokens": 1.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -184,7 +184,7 @@
           "modelId": "gemini-3-6-flash",
           "pricing": {
             "inputTokens": 1.5,
-            "outputTokens": 1.35,
+            "outputTokens": 1.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -200,7 +200,7 @@
           "modelId": "gemini-3-5-flash-lite",
           "pricing": {
             "inputTokens": 0.3,
-            "outputTokens": 0.27,
+            "outputTokens": 0.3,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -216,7 +216,7 @@
           "modelId": "gemini-3-flash-preview",
           "pricing": {
             "inputTokens": 0.5,
-            "outputTokens": 0.45,
+            "outputTokens": 0.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -232,7 +232,7 @@
           "modelId": "gemini-3-1-flash-lite",
           "pricing": {
             "inputTokens": 0.25,
-            "outputTokens": 0.225,
+            "outputTokens": 0.25,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -248,7 +248,7 @@
           "modelId": "gemini-3-1-flash-lite-image-(nano-banana-2-lite)",
           "pricing": {
             "inputTokens": 0.25,
-            "outputTokens": 0.225,
+            "outputTokens": 0.025,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -264,7 +264,7 @@
           "modelId": "gemini-3-1-flash-image-(nano-banana-2)",
           "pricing": {
             "inputTokens": 0.5,
-            "outputTokens": 0.45,
+            "outputTokens": 0.05,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -280,7 +280,7 @@
           "modelId": "gemini-3-pro-image-(nano-banana-pro)",
           "pricing": {
             "inputTokens": 2.0,
-            "outputTokens": 1.8,
+            "outputTokens": 0.2,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -328,7 +328,7 @@
           "modelId": "gemini-2-5-pro",
           "pricing": {
             "inputTokens": 1.25,
-            "outputTokens": 1.125,
+            "outputTokens": 2.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -344,7 +344,7 @@
           "modelId": "gemini-2-5-procomputer-use-preview",
           "pricing": {
             "inputTokens": 1.25,
-            "outputTokens": 1.125,
+            "outputTokens": 2.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -360,23 +360,7 @@
           "modelId": "gemini-2-5-flash",
           "pricing": {
             "inputTokens": 0.3,
-            "outputTokens": 0.27,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini 2.5 Flash Image",
-          "modelId": "gemini-2-5-flash-image",
-          "pricing": {
-            "inputTokens": 0.3,
-            "outputTokens": 0.27,
+            "outputTokens": 0.3,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -392,7 +376,7 @@
           "modelId": "gemini-2-5-flash-live-api",
           "pricing": {
             "inputTokens": 0.5,
-            "outputTokens": 0.45,
+            "outputTokens": 0.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -408,7 +392,7 @@
           "modelId": "gemini-2-5-flash-lite",
           "pricing": {
             "inputTokens": 0.1,
-            "outputTokens": 0.09,
+            "outputTokens": 0.1,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -456,39 +440,7 @@
           "modelId": "gemini-2-0-flash",
           "pricing": {
             "inputTokens": 0.15,
-            "outputTokens": 0.135,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini 2.0 Flash Image Generation",
-          "modelId": "gemini-2-0-flash-image-generation",
-          "pricing": {
-            "inputTokens": 0.15,
-            "outputTokens": 0.135,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini 2.0 Flash Live API",
-          "modelId": "gemini-2-0-flash-live-api",
-          "pricing": {
-            "inputTokens": 0.5,
-            "outputTokens": 0.45,
+            "outputTokens": 0.075,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -504,7 +456,7 @@
           "modelId": "gemini-2-0-flash-lite",
           "pricing": {
             "inputTokens": 0.075,
-            "outputTokens": 0.0675,
+            "outputTokens": 0.0375,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -568,7 +520,7 @@
           "modelId": "gemini-1-5-flash",
           "pricing": {
             "inputTokens": 2e-05,
-            "outputTokens": 1.8e-05,
+            "outputTokens": 4e-05,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -584,55 +536,7 @@
           "modelId": "gemini-1-5-pro",
           "pricing": {
             "inputTokens": 0.00032875,
-            "outputTokens": 0.000295875,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini 1.0 Pro",
-          "modelId": "gemini-1-0-pro",
-          "pricing": {
-            "inputTokens": 0.0025,
-            "outputTokens": 0.00225,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini Embedding",
-          "modelId": "gemini-embedding",
-          "pricing": {
-            "inputTokens": 0.00015,
-            "outputTokens": 0.000135,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Embeddings for Text (Excluding Gemini Embedding)",
-          "modelId": "embeddings-for-text-(excluding-gemini-embedding)",
-          "pricing": {
-            "inputTokens": 2.5e-05,
-            "outputTokens": 2.25e-05,
+            "outputTokens": 0.0006575,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -680,7 +584,7 @@
           "modelId": "gemini-3-1-pro",
           "pricing": {
             "inputTokens": 2.0,
-            "outputTokens": 1.8,
+            "outputTokens": 2.0,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -696,23 +600,7 @@
           "modelId": "gemini-3-flash",
           "pricing": {
             "inputTokens": 0.5,
-            "outputTokens": 0.45,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini Embedding 2 (Unified Multimodal, Preview)",
-          "modelId": "gemini-embedding-2-(unified-multimodal,-preview)",
-          "pricing": {
-            "inputTokens": 0.2,
-            "outputTokens": 0.18,
+            "outputTokens": 0.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -728,7 +616,7 @@
           "modelId": "gemini-3-6-flash,-gemini-3-5-flash,-gemini-3-flash",
           "pricing": {
             "inputTokens": 1e-06,
-            "outputTokens": 9e-07,
+            "outputTokens": 1e-06,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -744,7 +632,7 @@
           "modelId": "gemini-3-5-flash-lite,-gemini-3-1-flash-lite",
           "pricing": {
             "inputTokens": 1e-06,
-            "outputTokens": 9e-07,
+            "outputTokens": 1e-06,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -760,23 +648,7 @@
           "modelId": "gemini-3-pro",
           "pricing": {
             "inputTokens": 4.5e-06,
-            "outputTokens": 4.05e-06,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini 3.1 Flash Lite",
-          "modelId": "gemini-3-1-flash-lite",
-          "pricing": {
-            "inputTokens": 0.003,
-            "outputTokens": 0.0027,
+            "outputTokens": 4.5e-06,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -792,7 +664,7 @@
           "modelId": "gemini-3standard",
           "pricing": {
             "inputTokens": 2.0,
-            "outputTokens": 1.8,
+            "outputTokens": 4.0,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -806,7 +678,7 @@
           "modelId": "gemini-3-5",
           "pricing": {
             "inputTokens": 1.5,
-            "outputTokens": 1.35,
+            "outputTokens": 1.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -820,7 +692,7 @@
           "modelId": "gemini-3-6",
           "pricing": {
             "inputTokens": 1.5,
-            "outputTokens": 1.35,
+            "outputTokens": 1.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -834,7 +706,7 @@
           "modelId": "gemini-3",
           "pricing": {
             "inputTokens": 0.5,
-            "outputTokens": 0.45,
+            "outputTokens": 0.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -848,21 +720,7 @@
           "modelId": "gemini-3-1",
           "pricing": {
             "inputTokens": 0.25,
-            "outputTokens": 0.225,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "europe-west1"
-          ]
-        },
-        {
-          "name": "Gemini Enterprise",
-          "modelId": "gemini-enterprise",
-          "pricing": {
-            "inputTokens": 3.6,
-            "outputTokens": 3.24,
+            "outputTokens": 0.25,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -876,7 +734,21 @@
           "modelId": "gemini-2-5",
           "pricing": {
             "inputTokens": 1.25,
-            "outputTokens": 1.125,
+            "outputTokens": 2.5,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        },
+        {
+          "name": "Gemini 2.0",
+          "modelId": "gemini-2-0",
+          "pricing": {
+            "inputTokens": 35.0,
+            "outputTokens": 0.0,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -890,7 +762,7 @@
           "modelId": "gemini-for",
           "pricing": {
             "inputTokens": 45.0,
-            "outputTokens": 40.5,
+            "outputTokens": 2.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -928,20 +800,6 @@
           ]
         },
         {
-          "name": "Gemini 2.0",
-          "modelId": "gemini-2-0",
-          "pricing": {
-            "inputTokens": 0.15,
-            "outputTokens": 0.135,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "europe-west1"
-          ]
-        },
-        {
           "name": "Gemini models",
           "modelId": "gemini-models",
           "pricing": {
@@ -960,7 +818,7 @@
           "modelId": "gemini-1-5",
           "pricing": {
             "inputTokens": 0.00032875,
-            "outputTokens": 0.000295875,
+            "outputTokens": 0.0006575,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -974,7 +832,7 @@
           "modelId": "gemini-1-0",
           "pricing": {
             "inputTokens": 0.0025,
-            "outputTokens": 0.00225,
+            "outputTokens": 0.002,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -988,7 +846,7 @@
           "modelId": "gemini-api",
           "pricing": {
             "inputTokens": 0.00015,
-            "outputTokens": 0.000135,
+            "outputTokens": 0.00012,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1030,7 +888,7 @@
           "modelId": "gemini-on",
           "pricing": {
             "inputTokens": 0.2,
-            "outputTokens": 0.18,
+            "outputTokens": 0.1,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1044,7 +902,7 @@
           "modelId": "gemini-models",
           "pricing": {
             "inputTokens": 0.01,
-            "outputTokens": 0.009,
+            "outputTokens": 0.003,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1057,7 +915,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-08-12T07:40:50.632848Z",
+      "lastUpdated": "2026-08-13T07:42:43.371156Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1085,7 +943,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-08-12T07:40:50.234530Z",
+      "lastUpdated": "2026-08-13T07:42:42.978640Z",
       "models": [
         {
           "name": "GPT-4o",
