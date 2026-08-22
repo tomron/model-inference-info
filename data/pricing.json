@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-08-21T06:56:30.392940Z",
+  "lastUpdated": "2026-08-22T06:50:04.376849Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-08-21T06:56:14.864363Z",
+      "lastUpdated": "2026-08-22T06:49:49.029008Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-08-21T06:56:15.722849Z",
+      "lastUpdated": "2026-08-22T06:49:49.889846Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-08-21T06:56:20.286005Z",
+      "lastUpdated": "2026-08-22T06:49:54.253931Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-08-21T06:56:18.211636Z",
+      "lastUpdated": "2026-08-22T06:49:52.334461Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-08-21T06:56:18.940988Z",
+      "lastUpdated": "2026-08-22T06:49:52.982664Z",
       "models": [
         {
           "name": "Gemini 3.1 Pro Preview",
@@ -327,8 +327,8 @@
           "name": "Gemini 3 Pro Image (Nano Banana Pro)",
           "modelId": "gemini-3-pro-image-(nano-banana-pro)",
           "pricing": {
-            "inputTokens": 2.0,
-            "outputTokens": 0.2,
+            "inputTokens": 1.0,
+            "outputTokens": 0.1,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -977,7 +977,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-08-21T06:56:17.356722Z",
+      "lastUpdated": "2026-08-22T06:49:51.498582Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1005,7 +1005,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-08-21T06:56:16.682013Z",
+      "lastUpdated": "2026-08-22T06:49:50.838265Z",
       "models": [
         {
           "name": "GPT-4o",
