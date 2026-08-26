@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-08-25T06:57:31.450843Z",
+  "lastUpdated": "2026-08-26T06:58:22.619989Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-08-25T06:57:08.866008Z",
+      "lastUpdated": "2026-08-26T06:58:07.511625Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-08-25T06:57:09.642960Z",
+      "lastUpdated": "2026-08-26T06:58:07.997273Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-08-25T06:57:13.314161Z",
+      "lastUpdated": "2026-08-26T06:58:12.569321Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-08-25T06:57:11.638375Z",
+      "lastUpdated": "2026-08-26T06:58:09.430945Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-08-25T06:57:12.240548Z",
+      "lastUpdated": "2026-08-26T06:58:10.019292Z",
       "models": [
         {
           "name": "Gemini 3.1 Pro Preview",
@@ -977,7 +977,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-08-25T06:57:10.894679Z",
+      "lastUpdated": "2026-08-26T06:58:08.894191Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -988,7 +988,7 @@
             "unit": "per month",
             "currency": "USD"
           },
-          "notes": "$0.0/month subscription, unlimited usage"
+          "notes": "$100.0/month subscription, unlimited usage"
         },
         {
           "name": "GitHub Copilot (Business)",
@@ -1005,7 +1005,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-08-25T06:57:10.426002Z",
+      "lastUpdated": "2026-08-26T06:58:08.517027Z",
       "models": [
         {
           "name": "GPT-4o",
