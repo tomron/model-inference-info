@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-09-03T11:00:21.142503Z",
+  "lastUpdated": "2026-09-04T11:00:58.335995Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-09-03T11:00:07.129484Z",
+      "lastUpdated": "2026-09-04T11:00:34.090353Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-09-03T11:00:07.643069Z",
+      "lastUpdated": "2026-09-04T11:00:35.133618Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-09-03T11:00:11.028766Z",
+      "lastUpdated": "2026-09-04T11:00:39.248342Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-09-03T11:00:09.484574Z",
+      "lastUpdated": "2026-09-04T11:00:37.110719Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-09-03T11:00:10.100857Z",
+      "lastUpdated": "2026-09-04T11:00:37.736998Z",
       "models": [
         {
           "name": "Gemini 3.1 Pro Preview",
@@ -615,7 +615,7 @@
           "name": "Gemini 3.5 Transcribe",
           "modelId": "gemini-3-5-transcribe",
           "pricing": {
-            "inputTokens": 0.0025,
+            "inputTokens": 0.002,
             "outputTokens": 0.012,
             "unit": "per 1K tokens",
             "currency": "USD"
@@ -1099,7 +1099,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-09-03T11:00:08.911553Z",
+      "lastUpdated": "2026-09-04T11:00:36.543653Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1127,7 +1127,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-09-03T11:00:08.276280Z",
+      "lastUpdated": "2026-09-04T11:00:35.847325Z",
       "models": [
         {
           "name": "GPT-4o",
