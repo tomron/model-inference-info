@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-09-16T11:16:32.067959Z",
+  "lastUpdated": "2026-09-17T11:25:09.354597Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-09-16T11:16:17.484995Z",
+      "lastUpdated": "2026-09-17T11:24:52.020966Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-09-16T11:16:18.134977Z",
+      "lastUpdated": "2026-09-17T11:24:53.003675Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-09-16T11:16:22.001548Z",
+      "lastUpdated": "2026-09-17T11:24:59.291676Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-09-16T11:16:20.307833Z",
+      "lastUpdated": "2026-09-17T11:24:56.157077Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-09-16T11:16:20.731443Z",
+      "lastUpdated": "2026-09-17T11:24:57.635356Z",
       "models": [
         {
           "name": "Gemini 3.1 Pro Preview",
@@ -153,6 +153,22 @@
           "pricing": {
             "inputTokens": 2.0,
             "outputTokens": 4.0,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini 3.8 Flash Cyber",
+          "modelId": "gemini-3-8-flash-cyber",
+          "pricing": {
+            "inputTokens": 1.5,
+            "outputTokens": 1.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -660,6 +676,22 @@
           ]
         },
         {
+          "name": "Gemini 3.8 Flash",
+          "modelId": "gemini-3-8-flash",
+          "pricing": {
+            "inputTokens": 1.5,
+            "outputTokens": 1.5,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
           "name": "Gemini 3.7 Flash",
           "modelId": "gemini-3-7-flash",
           "pricing": {
@@ -708,8 +740,8 @@
           ]
         },
         {
-          "name": "Gemini 3.6 Flash, Gemini 3.5 Flash, Gemini 3 Flash",
-          "modelId": "gemini-3-6-flash,-gemini-3-5-flash,-gemini-3-flash",
+          "name": "Gemini 3.8 Flash Cyber, Gemini 3.8 Flash, Gemini 3.7 Flash, Gemini 3.6 Flash, Gemini 3.5 Flash, Gemini 3 Flash",
+          "modelId": "gemini-3-8-flash-cyber,-gemini-3-8-flash,-gemini-3-7-flash,-gemini-3-6-flash,-gemini-3-5-flash,-gemini-3-flash",
           "pricing": {
             "inputTokens": 1e-06,
             "outputTokens": 1e-06,
@@ -1067,7 +1099,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-09-16T11:16:19.446871Z",
+      "lastUpdated": "2026-09-17T11:24:55.329025Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1095,7 +1127,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-09-16T11:16:19.033032Z",
+      "lastUpdated": "2026-09-17T11:24:54.221395Z",
       "models": [
         {
           "name": "GPT-4o",
