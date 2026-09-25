@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-09-24T11:30:17.717504Z",
+  "lastUpdated": "2026-09-25T11:36:18.946992Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-09-24T11:29:53.556454Z",
+      "lastUpdated": "2026-09-25T11:35:50.900351Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-09-24T11:29:54.185922Z",
+      "lastUpdated": "2026-09-25T11:35:51.650571Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-09-24T11:29:59.639057Z",
+      "lastUpdated": "2026-09-25T11:36:00.838129Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-09-24T11:29:56.286726Z",
+      "lastUpdated": "2026-09-25T11:35:59.075627Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,8 +145,24 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-09-24T11:29:56.922619Z",
+      "lastUpdated": "2026-09-25T11:35:59.594918Z",
       "models": [
+        {
+          "name": "Gemini 3.8 Live API",
+          "modelId": "gemini-3-8-live-api",
+          "pricing": {
+            "inputTokens": 0.75,
+            "outputTokens": 0.75,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
         {
           "name": "Gemini 3.1 Pro Preview",
           "modelId": "gemini-3-1-pro-preview",
@@ -805,6 +821,20 @@
           "name": "Gemini 3Standard",
           "modelId": "gemini-3standard",
           "pricing": {
+            "inputTokens": 0.75,
+            "outputTokens": 0.75,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        },
+        {
+          "name": "Gemini 3.1",
+          "modelId": "gemini-3-1",
+          "pricing": {
             "inputTokens": 2.0,
             "outputTokens": 4.0,
             "unit": "per 1K tokens",
@@ -863,20 +893,6 @@
           "pricing": {
             "inputTokens": 1.5,
             "outputTokens": 1.5,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "europe-west1"
-          ]
-        },
-        {
-          "name": "Gemini 3.1",
-          "modelId": "gemini-3-1",
-          "pricing": {
-            "inputTokens": 0.25,
-            "outputTokens": 0.25,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1099,7 +1115,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-09-24T11:29:55.364027Z",
+      "lastUpdated": "2026-09-25T11:35:58.092783Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1127,7 +1143,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-09-24T11:29:54.948347Z",
+      "lastUpdated": "2026-09-25T11:35:52.610686Z",
       "models": [
         {
           "name": "GPT-4o",
