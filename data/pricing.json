@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-10-06T13:09:28.356564Z",
+  "lastUpdated": "2026-10-07T13:04:42.868045Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-10-06T13:09:04.263070Z",
+      "lastUpdated": "2026-10-07T13:04:18.303339Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-10-06T13:09:05.055744Z",
+      "lastUpdated": "2026-10-07T13:04:18.748021Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-10-06T13:09:09.178596Z",
+      "lastUpdated": "2026-10-07T13:04:24.811355Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-10-06T13:09:07.142637Z",
+      "lastUpdated": "2026-10-07T13:04:21.113331Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-10-06T13:09:07.775542Z",
+      "lastUpdated": "2026-10-07T13:04:21.566251Z",
       "models": [
         {
           "name": "Gemini 3.8 Live API",
@@ -345,54 +345,6 @@
           "pricing": {
             "inputTokens": 0.25,
             "outputTokens": 0.25,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini 3.1 Flash-Lite Image (Nano Banana 2 Lite)",
-          "modelId": "gemini-3-1-flash-lite-image-(nano-banana-2-lite)",
-          "pricing": {
-            "inputTokens": 0.25,
-            "outputTokens": 0.025,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini 3.1 Flash Image (Nano Banana 2)",
-          "modelId": "gemini-3-1-flash-image-(nano-banana-2)",
-          "pricing": {
-            "inputTokens": 0.5,
-            "outputTokens": 0.05,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Gemini 3 Pro Image (Nano Banana Pro)",
-          "modelId": "gemini-3-pro-image-(nano-banana-pro)",
-          "pricing": {
-            "inputTokens": 2.0,
-            "outputTokens": 4.0,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -617,6 +569,86 @@
           "pricing": {
             "inputTokens": 0.025,
             "outputTokens": 0.0,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini Nano Banana 2.1",
+          "modelId": "gemini-nano-banana-2-1",
+          "pricing": {
+            "inputTokens": 1.5,
+            "outputTokens": 0.15,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini 3.1 Flash-Lite Image (Nano Banana 2 Lite)",
+          "modelId": "gemini-3-1-flash-lite-image-(nano-banana-2-lite)",
+          "pricing": {
+            "inputTokens": 0.25,
+            "outputTokens": 0.025,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini 3.1 Flash Image (Nano Banana 2)",
+          "modelId": "gemini-3-1-flash-image-(nano-banana-2)",
+          "pricing": {
+            "inputTokens": 0.5,
+            "outputTokens": 0.05,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini 3 Pro Image (Nano Banana Pro)",
+          "modelId": "gemini-3-pro-image-(nano-banana-pro)",
+          "pricing": {
+            "inputTokens": 2.0,
+            "outputTokens": 0.2,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini Nano Banana 2.1 [4]",
+          "modelId": "gemini-nano-banana-2-1-[4]",
+          "pricing": {
+            "inputTokens": 0.75,
+            "outputTokens": 0.075,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1002,6 +1034,20 @@
           ]
         },
         {
+          "name": "Gemini Nano",
+          "modelId": "gemini-nano",
+          "pricing": {
+            "inputTokens": 2.7,
+            "outputTokens": 0.27,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        },
+        {
           "name": "Gemini 1.5Show",
           "modelId": "gemini-1-5show",
           "pricing": {
@@ -1131,7 +1177,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-10-06T13:09:06.430253Z",
+      "lastUpdated": "2026-10-07T13:04:20.091278Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1159,7 +1205,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-10-06T13:09:05.988218Z",
+      "lastUpdated": "2026-10-07T13:04:19.560699Z",
       "models": [
         {
           "name": "GPT-4o",
