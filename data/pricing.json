@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-10-13T13:58:05.397485Z",
+  "lastUpdated": "2026-10-14T11:35:02.445234Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-10-13T13:57:40.561856Z",
+      "lastUpdated": "2026-10-14T11:34:38.539298Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-10-13T13:57:41.982618Z",
+      "lastUpdated": "2026-10-14T11:34:39.063258Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-10-13T13:57:46.305817Z",
+      "lastUpdated": "2026-10-14T11:34:43.386829Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-10-13T13:57:44.134381Z",
+      "lastUpdated": "2026-10-14T11:34:41.228105Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,8 +145,72 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-10-13T13:57:44.770817Z",
+      "lastUpdated": "2026-10-14T11:34:41.705370Z",
       "models": [
+        {
+          "name": "Gemini 4 Argon*through November 30, 2026",
+          "modelId": "gemini-4-argon*through-november-30,-2026",
+          "pricing": {
+            "inputTokens": 2.0,
+            "outputTokens": 0.1,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini 4 Argon(Starting December 1, 2026),Gemini 4 Argon Cyber Permissive",
+          "modelId": "gemini-4-argon(starting-december-1,-2026),gemini-4-argon-cyber-permissive",
+          "pricing": {
+            "inputTokens": 4.0,
+            "outputTokens": 0.2,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Grounding with Google Search & Web Grounding for Enterprise",
+          "modelId": "grounding-with-google-search-&-web-grounding-for-enterprise",
+          "pricing": {
+            "inputTokens": 0.014,
+            "outputTokens": 0.0,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Grounding with Google Maps",
+          "modelId": "grounding-with-google-maps",
+          "pricing": {
+            "inputTokens": 14.0,
+            "outputTokens": 0.0,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
         {
           "name": "Gemini 3.8 Live API",
           "modelId": "gemini-3-8-live-api",
@@ -345,38 +409,6 @@
           "pricing": {
             "inputTokens": 0.25,
             "outputTokens": 0.25,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Grounding with Google Search & Web Grounding for Enterprise",
-          "modelId": "grounding-with-google-search-&-web-grounding-for-enterprise",
-          "pricing": {
-            "inputTokens": 0.014,
-            "outputTokens": 0.0,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "us-east4",
-            "europe-west1",
-            "asia-southeast1"
-          ]
-        },
-        {
-          "name": "Grounding with Google Maps",
-          "modelId": "grounding-with-google-maps",
-          "pricing": {
-            "inputTokens": 14.0,
-            "outputTokens": 0.0,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -724,8 +756,24 @@
           ]
         },
         {
-          "name": "Gemini 3.8 Flash",
-          "modelId": "gemini-3-8-flash",
+          "name": "Gemini 4 Argon*Gemini 4 Argon Cyber Permissive",
+          "modelId": "gemini-4-argon*gemini-4-argon-cyber-permissive",
+          "pricing": {
+            "inputTokens": 4.0,
+            "outputTokens": 4.0,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini 3.8 Flash *",
+          "modelId": "gemini-3-8-flash-*",
           "pricing": {
             "inputTokens": 1.5,
             "outputTokens": 1.5,
@@ -740,8 +788,8 @@
           ]
         },
         {
-          "name": "Gemini 3.7 Flash",
-          "modelId": "gemini-3-7-flash",
+          "name": "Gemini 3.7 Flash *",
+          "modelId": "gemini-3-7-flash-*",
           "pricing": {
             "inputTokens": 1.5,
             "outputTokens": 1.5,
@@ -756,8 +804,8 @@
           ]
         },
         {
-          "name": "Gemini 3.6 Flash",
-          "modelId": "gemini-3-6-flash",
+          "name": "Gemini 3.6 Flash *",
+          "modelId": "gemini-3-6-flash-*",
           "pricing": {
             "inputTokens": 1.5,
             "outputTokens": 1.5,
@@ -793,6 +841,22 @@
           "pricing": {
             "inputTokens": 0.0015,
             "outputTokens": 0.003,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini 4 Argon",
+          "modelId": "gemini-4-argon",
+          "pricing": {
+            "inputTokens": 0.002,
+            "outputTokens": 0.008,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -866,11 +930,39 @@
           ]
         },
         {
-          "name": "Gemini 3Standard",
-          "modelId": "gemini-3standard",
+          "name": "Gemini 4Standard",
+          "modelId": "gemini-4standard",
           "pricing": {
-            "inputTokens": 0.75,
-            "outputTokens": 0.75,
+            "inputTokens": 0.1,
+            "outputTokens": 2.2,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        },
+        {
+          "name": "Gemini 4",
+          "modelId": "gemini-4",
+          "pricing": {
+            "inputTokens": 0.2,
+            "outputTokens": 4.4,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        },
+        {
+          "name": "Gemini 3",
+          "modelId": "gemini-3",
+          "pricing": {
+            "inputTokens": 14.0,
+            "outputTokens": 0.0,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -883,8 +975,8 @@
           "name": "Gemini 3.1",
           "modelId": "gemini-3-1",
           "pricing": {
-            "inputTokens": 2.0,
-            "outputTokens": 4.0,
+            "inputTokens": 0.045,
+            "outputTokens": 0.067,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -913,20 +1005,6 @@
           "pricing": {
             "inputTokens": 0.75,
             "outputTokens": 0.75,
-            "unit": "per 1K tokens",
-            "currency": "USD"
-          },
-          "regions": [
-            "us-central1",
-            "europe-west1"
-          ]
-        },
-        {
-          "name": "Gemini 3",
-          "modelId": "gemini-3",
-          "pricing": {
-            "inputTokens": 0.5,
-            "outputTokens": 0.5,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1177,7 +1255,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-10-13T13:57:43.307654Z",
+      "lastUpdated": "2026-10-14T11:34:40.481815Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1205,7 +1283,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-10-13T13:57:42.888434Z",
+      "lastUpdated": "2026-10-14T11:34:40.058840Z",
       "models": [
         {
           "name": "GPT-4o",
