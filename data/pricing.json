@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-10-27T11:55:48.923164Z",
+  "lastUpdated": "2026-10-28T12:32:38.779860Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-10-27T11:55:25.834557Z",
+      "lastUpdated": "2026-10-28T12:32:23.355112Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-10-27T11:55:26.539018Z",
+      "lastUpdated": "2026-10-28T12:32:24.011976Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-10-27T11:55:30.827625Z",
+      "lastUpdated": "2026-10-28T12:32:28.708284Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-10-27T11:55:28.531025Z",
+      "lastUpdated": "2026-10-28T12:32:26.573886Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-10-27T11:55:29.112908Z",
+      "lastUpdated": "2026-10-28T12:32:27.099033Z",
       "models": [
         {
           "name": "Gemini 4 Argon*through November 30, 2026",
@@ -724,6 +724,38 @@
           ]
         },
         {
+          "name": "Gemini ER 2.0*through December 31, 2026",
+          "modelId": "gemini-er-2-0*through-december-31,-2026",
+          "pricing": {
+            "inputTokens": 1.0,
+            "outputTokens": 0.1,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini ER 2.0(Starting January 1, 2027)",
+          "modelId": "gemini-er-2-0(starting-january-1,-2027)",
+          "pricing": {
+            "inputTokens": 2.0,
+            "outputTokens": 0.2,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
           "name": "Gemini Deep Research Agent",
           "modelId": "gemini-deep-research-agent",
           "pricing": {
@@ -868,6 +900,22 @@
           ]
         },
         {
+          "name": "Gemini ER 2.0*(through December 31, 2026)",
+          "modelId": "gemini-er-2-0*(through-december-31,-2026)",
+          "pricing": {
+            "inputTokens": 5e-07,
+            "outputTokens": 5e-07,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
           "name": "Gemini 3.8 Flash Cyber, Gemini 3.8 Flash, Gemini 3.7 Flash, Gemini 3.6 Flash, Gemini 3.5 Flash, Gemini 3 Flash",
           "modelId": "gemini-3-8-flash-cyber,-gemini-3-8-flash,-gemini-3-7-flash,-gemini-3-6-flash,-gemini-3-5-flash,-gemini-3-flash",
           "pricing": {
@@ -933,8 +981,8 @@
           "name": "Gemini 4Standard",
           "modelId": "gemini-4standard",
           "pricing": {
-            "inputTokens": 0.1,
-            "outputTokens": 2.2,
+            "inputTokens": 2.0,
+            "outputTokens": 0.1,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -947,8 +995,8 @@
           "name": "Gemini 4",
           "modelId": "gemini-4",
           "pricing": {
-            "inputTokens": 0.2,
-            "outputTokens": 4.4,
+            "inputTokens": 4.0,
+            "outputTokens": 0.2,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1182,6 +1230,34 @@
           ]
         },
         {
+          "name": "Gemini RoboticsShow",
+          "modelId": "gemini-roboticsshow",
+          "pricing": {
+            "inputTokens": 1.0,
+            "outputTokens": 0.1,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        },
+        {
+          "name": "Gemini ER",
+          "modelId": "gemini-er",
+          "pricing": {
+            "inputTokens": 2.0,
+            "outputTokens": 0.2,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "europe-west1"
+          ]
+        },
+        {
           "name": "Gemini OmniModelTypeToken",
           "modelId": "gemini-omnimodeltypetoken",
           "pricing": {
@@ -1255,7 +1331,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-10-27T11:55:27.851879Z",
+      "lastUpdated": "2026-10-28T12:32:25.545658Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1283,7 +1359,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-10-27T11:55:27.348558Z",
+      "lastUpdated": "2026-10-28T12:32:25.117638Z",
       "models": [
         {
           "name": "GPT-4o",
