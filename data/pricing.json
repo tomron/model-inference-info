@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-11-05T14:27:09.486756Z",
+  "lastUpdated": "2026-11-06T14:02:55.756754Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-11-05T14:26:39.005722Z",
+      "lastUpdated": "2026-11-06T14:02:32.802998Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-11-05T14:26:39.927278Z",
+      "lastUpdated": "2026-11-06T14:02:33.549681Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-11-05T14:26:51.353590Z",
+      "lastUpdated": "2026-11-06T14:02:37.581259Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-11-05T14:26:49.666929Z",
+      "lastUpdated": "2026-11-06T14:02:35.852626Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-11-05T14:26:50.150897Z",
+      "lastUpdated": "2026-11-06T14:02:36.468761Z",
       "models": [
         {
           "name": "Gemini 4 Argon*through November 30, 2026",
@@ -1258,8 +1258,8 @@
           ]
         },
         {
-          "name": "Gemini OmniModelTypeToken",
-          "modelId": "gemini-omnimodeltypetoken",
+          "name": "Gemini OmniShow",
+          "modelId": "gemini-omnishow",
           "pricing": {
             "inputTokens": 1.5,
             "outputTokens": 9.0,
@@ -1275,8 +1275,8 @@
           "name": "Gemini Omni",
           "modelId": "gemini-omni",
           "pricing": {
-            "inputTokens": 0.2,
-            "outputTokens": 12.0,
+            "inputTokens": 1.5,
+            "outputTokens": 9.0,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1331,7 +1331,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-11-05T14:26:41.413977Z",
+      "lastUpdated": "2026-11-06T14:02:34.898991Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1359,7 +1359,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-11-05T14:26:40.916966Z",
+      "lastUpdated": "2026-11-06T14:02:34.428678Z",
       "models": [
         {
           "name": "GPT-4o",
