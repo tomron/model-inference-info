@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-11-09T15:51:06.717576Z",
+  "lastUpdated": "2026-11-10T14:41:03.820725Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-11-09T15:50:43.241308Z",
+      "lastUpdated": "2026-11-10T14:40:40.359597Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-11-09T15:50:43.786201Z",
+      "lastUpdated": "2026-11-10T14:40:40.955866Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-11-09T15:50:47.663290Z",
+      "lastUpdated": "2026-11-10T14:40:44.778038Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-11-09T15:50:45.810295Z",
+      "lastUpdated": "2026-11-10T14:40:42.943443Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,7 +145,7 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-11-09T15:50:46.370294Z",
+      "lastUpdated": "2026-11-10T14:40:43.412235Z",
       "models": [
         {
           "name": "Gemini 4 Argon*through November 30, 2026",
@@ -1331,7 +1331,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-11-09T15:50:44.929329Z",
+      "lastUpdated": "2026-11-10T14:40:42.094165Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1359,7 +1359,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-11-09T15:50:44.709079Z",
+      "lastUpdated": "2026-11-10T14:40:41.841931Z",
       "models": [
         {
           "name": "GPT-4o",
