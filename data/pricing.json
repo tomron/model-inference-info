@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-11-10T14:41:03.820725Z",
+  "lastUpdated": "2026-11-11T13:56:18.586844Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-11-10T14:40:40.359597Z",
+      "lastUpdated": "2026-11-11T13:55:55.371058Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-11-10T14:40:40.955866Z",
+      "lastUpdated": "2026-11-11T13:55:56.064755Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-11-10T14:40:44.778038Z",
+      "lastUpdated": "2026-11-11T13:56:00.455884Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-11-10T14:40:42.943443Z",
+      "lastUpdated": "2026-11-11T13:55:58.465267Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,8 +145,40 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-11-10T14:40:43.412235Z",
+      "lastUpdated": "2026-11-11T13:55:59.157955Z",
       "models": [
+        {
+          "name": "Gemini 4 Carbon*through November 30, 2026",
+          "modelId": "gemini-4-carbon*through-november-30,-2026",
+          "pricing": {
+            "inputTokens": 2.0,
+            "outputTokens": 0.1,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
+        {
+          "name": "Gemini 4 Carbon(Starting December 1, 2026),Gemini 4 Carbon Cyber Permissive",
+          "modelId": "gemini-4-carbon(starting-december-1,-2026),gemini-4-carbon-cyber-permissive",
+          "pricing": {
+            "inputTokens": 4.0,
+            "outputTokens": 0.2,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
         {
           "name": "Gemini 4 Argon*through November 30, 2026",
           "modelId": "gemini-4-argon*through-november-30,-2026",
@@ -981,8 +1013,8 @@
           "name": "Gemini 4Standard",
           "modelId": "gemini-4standard",
           "pricing": {
-            "inputTokens": 2.0,
-            "outputTokens": 0.1,
+            "inputTokens": 0.1,
+            "outputTokens": 2.2,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1331,7 +1363,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-11-10T14:40:42.094165Z",
+      "lastUpdated": "2026-11-11T13:55:57.387376Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1359,7 +1391,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-11-10T14:40:41.841931Z",
+      "lastUpdated": "2026-11-11T13:55:57.108297Z",
       "models": [
         {
           "name": "GPT-4o",
