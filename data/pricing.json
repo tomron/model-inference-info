@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-11-18T15:27:58.303101Z",
+  "lastUpdated": "2026-11-19T15:34:00.743912Z",
   "providers": [
     {
       "name": "AWS Bedrock",
-      "lastUpdated": "2026-11-18T15:27:35.718252Z",
+      "lastUpdated": "2026-11-19T15:33:37.425676Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Anthropic",
-      "lastUpdated": "2026-11-18T15:27:36.392610Z",
+      "lastUpdated": "2026-11-19T15:33:38.286823Z",
       "models": [
         {
           "name": "Claude 3.5 Sonnet",
@@ -91,7 +91,7 @@
     },
     {
       "name": "Azure OpenAI",
-      "lastUpdated": "2026-11-18T15:27:40.195781Z",
+      "lastUpdated": "2026-11-19T15:33:42.646152Z",
       "models": [
         {
           "name": "GPT-4o",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Cursor",
-      "lastUpdated": "2026-11-18T15:27:38.204235Z",
+      "lastUpdated": "2026-11-19T15:33:40.692395Z",
       "models": [
         {
           "name": "Cursor Pro",
@@ -145,8 +145,24 @@
     },
     {
       "name": "GCP Vertex AI",
-      "lastUpdated": "2026-11-18T15:27:38.783707Z",
+      "lastUpdated": "2026-11-19T15:33:41.200405Z",
       "models": [
+        {
+          "name": "Gemini 4 Neon",
+          "modelId": "gemini-4-neon",
+          "pricing": {
+            "inputTokens": 3.0,
+            "outputTokens": 0.15,
+            "unit": "per 1K tokens",
+            "currency": "USD"
+          },
+          "regions": [
+            "us-central1",
+            "us-east4",
+            "europe-west1",
+            "asia-southeast1"
+          ]
+        },
         {
           "name": "Gemini 4 Hydrogen",
           "modelId": "gemini-4-hydrogen",
@@ -1045,8 +1061,8 @@
           "name": "Gemini 4Standard",
           "modelId": "gemini-4standard",
           "pricing": {
-            "inputTokens": 1.5,
-            "outputTokens": 0.075,
+            "inputTokens": 3.0,
+            "outputTokens": 0.15,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1059,8 +1075,8 @@
           "name": "Gemini 4",
           "modelId": "gemini-4",
           "pricing": {
-            "inputTokens": 2.0,
-            "outputTokens": 0.1,
+            "inputTokens": 1.5,
+            "outputTokens": 0.075,
             "unit": "per 1K tokens",
             "currency": "USD"
           },
@@ -1395,7 +1411,7 @@
     },
     {
       "name": "GitHub Copilot",
-      "lastUpdated": "2026-11-18T15:27:37.547115Z",
+      "lastUpdated": "2026-11-19T15:33:39.718234Z",
       "models": [
         {
           "name": "GitHub Copilot (Individual)",
@@ -1423,7 +1439,7 @@
     },
     {
       "name": "OpenAI",
-      "lastUpdated": "2026-11-18T15:27:37.308864Z",
+      "lastUpdated": "2026-11-19T15:33:39.486033Z",
       "models": [
         {
           "name": "GPT-4o",
